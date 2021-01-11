@@ -280,7 +280,21 @@ var render = function() {
                         return [
                           _c("home-list", {
                             key: item["k0"],
-                            attrs: { _i: "7-" + $30 + "-" + $31 }
+                            attrs: { _i: "7-" + $30 + "-" + $31 },
+                            on: {
+                              toDetail: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              },
+                              agree: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              },
+                              disAgree: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              },
+                              follow: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              }
+                            }
                           })
                         ]
                       }),
@@ -460,7 +474,12 @@ var render = function() {
                 : [
                     _c("v-uni-view", {
                       staticClass: _vm._$g(7, "sc"),
-                      attrs: { _i: 7 }
+                      attrs: { _i: 7 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event)
+                        }
+                      }
                     }),
                     _vm._v("关注")
                   ]
@@ -470,12 +489,30 @@ var render = function() {
         ],
         1
       ),
-      _c("v-uni-view", { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } }, [
-        _vm._v(_vm._$g(8, "t0-0"))
-      ]),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
+        {
+          staticClass: _vm._$g(8, "sc"),
+          attrs: { _i: 8 },
+          on: {
+            click: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
+        [_vm._v(_vm._$g(8, "t0-0"))]
+      ),
+      _c(
+        "v-uni-view",
+        {
+          staticClass: _vm._$g(9, "sc"),
+          attrs: { _i: 9 },
+          on: {
+            click: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
         [
           _c("v-uni-image", {
             attrs: {
@@ -511,7 +548,15 @@ var render = function() {
             [
               _c(
                 "v-uni-view",
-                { class: _vm._$g(16, "c"), attrs: { _i: 16 } },
+                {
+                  class: _vm._$g(16, "c"),
+                  attrs: { _i: 16 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
                 [
                   _c("v-uni-view", {
                     staticClass: _vm._$g(17, "sc"),
@@ -523,7 +568,15 @@ var render = function() {
               ),
               _c(
                 "v-uni-view",
-                { class: _vm._$g(18, "c"), attrs: { _i: 18 } },
+                {
+                  class: _vm._$g(18, "c"),
+                  attrs: { _i: 18 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
                 [
                   _c("v-uni-view", {
                     staticClass: _vm._$g(19, "sc"),

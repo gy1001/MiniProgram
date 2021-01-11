@@ -1,5 +1,5 @@
 <template>
-	<view class="index-list">
+	<view class="index-list animated fadeInRight">
 		<view class="index-list1 u-flex u-acenter u-jbetween">
 			<view class="u-flex u-acenter">
 				<image :src="item.userpic" mode="widthFix" lazy-load></image>{{item.username}}
@@ -7,12 +7,12 @@
 			<view class="u-flex u-acenter">
 				<template v-if="item.isGuanzhu">已关注</template>
 				<template v-else>
-					<view class="icon iconfont icon-zengjia"></view>关注
+					<view @click="follow" class="icon iconfont icon-zengjia"></view>关注
 				</template>
 			</view>
 		</view>
-		<view class="index-list2">{{item.title}}</view>
-		<view class="index-list3 u-flex u-acenter u-jcenter">
+		<view class="index-list2" @click="toDetail">{{item.title}}</view>
+		<view class="index-list3 u-flex u-acenter u-jcenter" @click="toDetail">
 			<!-- 图片 -->
 			<image :src="item.titlePic" mode="widthFix" lazy-load></image>
 			<!-- 视频 -->
@@ -25,16 +25,16 @@
 		</view>
 		<view class="index-list4 u-flex u-acenter u-jbetween">
 			<view class="">
-				<view :class="{ active: item.info.index + '' === '1' }">
+				<view :class="{ active: item.info.index + '' === '1' }" @click="operate('ding')">
 					<view class="icon iconfont icon-icon_xiaolian-mian"></view>{{item.info.dingNum}}
 				</view>
-				<view :class="{ active: item.info.index + '' === '2' }">
+				<view :class="{ active: item.info.index + '' === '2' }" @click="operate('cai')">
 					<view class="icon iconfont icon-kulian"></view>{{item.info.caiNum}}
 				</view>
 			</view>
 			<view class="">
 				<view class="">
-					<view class="icon iconfont icon-pinglun"></view>{{item.comment}}
+					<view class="icon iconfont icon-pinglun"></view>{{item.commentNum}}
 				</view>
 				<view class="">
 					<view class="icon iconfont icon-zhuanfa"></view>{{item.shareNum}}
@@ -59,6 +59,29 @@
 			index: {
 				type: [Number, String],
 				default: 0
+			}
+		},
+		methods: {
+			follow(){
+				this.$emit("follow", this.index)
+			},
+			operate(type){
+				// 顶
+				if(type === "ding"){
+					if(this.item.info.index === 1){
+						return
+					}
+					this.$emit("agree", this.index)
+					return
+				}
+				// 踩
+				if(this.item.info.index === 2){
+					return
+				}
+				this.$emit("disAgree", this.index)
+			},
+			toDetail(){
+				this.$emit("toDetail", this.index)
 			}
 		}
 	}

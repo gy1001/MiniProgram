@@ -7,10 +7,10 @@
 					<scroll-view :scroll-y="true" class="list" :style="{height: contentHeight + 'px' }" @scrolltolower="loadMore(swiperIndex)">
 						<!-- 图文列表 -->
 						<block v-for="(item, index) in swiperItem.list" :key="index">
-							<home-list :item="item" :index="index"></home-list>
+							<home-list @toDetail="toDetail($event, swiperIndex)" @agree="agree($event, swiperIndex)" @disAgree="disAgree($event, swiperIndex)"  @follow="follow(swiperIndex, $event)" :item="item" :index="index"></home-list>
 						</block>
 						<!-- 上拉加载更多 -->
-						<load-more :loadText="swiperItem.loadText"></load-more>
+						<load-more :loadText="swiperItem.loadText"></load-more> 
 					</scroll-view>
 				</swiper-item>
 			</swiper>
@@ -270,7 +270,6 @@
 		onLoad() {
 			uni.getSystemInfo({
 				success: (res) => {
-					console.log(res.windowHeight)
 					let height = res.windowHeight - uni.upx2px(100) // 导航条是100upx
 					this.contentHeight = height
 				}
@@ -282,6 +281,32 @@
 			},
 			swiperChange(e){
 				this.tabIndex = e.detail.current
+			},
+			follow(swiperIndex, index){
+				this.dataList[swiperIndex].list[index].isGuanzhu = true
+				uni.showToast({
+					title: "关注成功"
+				})
+			},
+			// 点赞
+			agree(index, swiperIndex){
+				this.dataList[swiperIndex].list[index].info.dingNum ++;
+				if(this.dataList[swiperIndex].list[index].info.index === 2){
+					this.dataList[swiperIndex].list[index].info.caiNum --;
+				}
+				this.dataList[swiperIndex].list[index].info.index = 1
+			},
+			// 踩
+			disAgree(index, swiperIndex){
+				this.dataList[swiperIndex].list[index].info.caiNum ++;
+				if(this.dataList[swiperIndex].list[index].info.index === 1){
+					this.dataList[swiperIndex].list[index].info.dingNum --
+				}
+				this.dataList[swiperIndex].list[index].info.index = 2
+			},
+			// 进入详情页
+			toDetail(index, swiperIndex){
+				console.log("进入详情页", index, swiperIndex)
 			},
 			// 上拉加载更多
 			loadMore(index){
