@@ -3,7 +3,41 @@
 		{
 			"path": "pages/home/home",
 			"style": {
-				"navigationBarTitleText": "主页"
+				"navigationBarTitleText": "主页",
+				"mp-weixin": {
+					
+				},
+				"app-plus": {
+					"scrollIndicator": "none", // 隐藏滚动条
+					"titleNView": {
+						"searchInput": {
+							"align": "center",
+							"backgroundColor": "#F7F7F7",
+							"borderRadius": "4px",
+							"placeholder": "搜索糗事",
+							"placeholderColor": "#CCCCCC",
+							"disabled": true
+						},
+						"buttons": [
+							// 左边的
+							{
+								"color": "#FF9619",
+								"float": "left",
+								"fontSize": "20px",
+								"fontSrc": "/static/font/iconfont.tff",
+								"text": "\ue609"
+							},
+							// 右边
+							{
+								"color": "#000000",
+								"float": "right",
+								"fontSize": "20px",
+								"fontSrc": "/static/font/iconfont.tff",
+								"text": "\ue653"
+							}
+						]
+					}
+				}				
 			}
 		},
 		{
