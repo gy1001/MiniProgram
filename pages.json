@@ -9,6 +9,7 @@
 				},
 				"app-plus": {
 					"scrollIndicator": "none", // 隐藏滚动条
+					"bounce": "none", // 页面反弹效果
 					"titleNView": {
 						"searchInput": {
 							"align": "center",

@@ -4,10 +4,13 @@
 		<view class="content-view">
 			<swiper @change="swiperChange" class="swiper-outer-container" :style="{height: contentHeight + 'px' }" :current="tabIndex">
 				<swiper-item class="" v-for="(swiperItem, swiperIndex) in dataList" :key="swiperIndex">
-					<scroll-view :scroll-y="true" class="list" :style="{height: contentHeight + 'px' }">
+					<scroll-view :scroll-y="true" class="list" :style="{height: contentHeight + 'px' }" @scrolltolower="loadMore(swiperIndex)">
+						<!-- 图文列表 -->
 						<block v-for="(item, index) in swiperItem.list" :key="index">
 							<home-list :item="item" :index="index"></home-list>
 						</block>
+						<!-- 上拉加载更多 -->
+						<load-more :loadText="swiperItem.loadText"></load-more>
 					</scroll-view>
 				</swiper-item>
 			</swiper>
@@ -18,10 +21,12 @@
 <script>
 	import HomeList from '../../components/home-list.vue'
 	import SwiperTabHead from '../../components/swiper-tab-head.vue'
+	import LoadMore from '../../components/load-more.vue'
 	export default {
 		components: {
 			'home-list': HomeList,
-			'swiper-tab-head': SwiperTabHead
+			'swiper-tab-head': SwiperTabHead,
+			'load-more': LoadMore
 		},
 		data() {
 			return {
@@ -37,6 +42,7 @@
 				],
 				dataList: [
 					{
+						loadText: '上拉加载更多',
 						list: [
 							{
 								userpic: '../../static/demo/userpic/12.jpg',
@@ -73,6 +79,7 @@
 						]
 					},
 					{
+						loadText: '上拉加载更多',
 						list: [
 							{
 								userpic: '../../static/demo/userpic/12.jpg',
@@ -109,6 +116,7 @@
 						]
 					},
 					{
+						loadText: '上拉加载更多',
 						list: [
 							{
 								userpic: '../../static/demo/userpic/12.jpg',
@@ -145,6 +153,7 @@
 						]
 					},
 					{
+						loadText: '上拉加载更多',
 						list: [
 							{
 								userpic: '../../static/demo/userpic/12.jpg',
@@ -181,6 +190,7 @@
 						]
 					},
 					{
+						loadText: '上拉加载更多',
 						list: [
 							{
 								userpic: '../../static/demo/userpic/12.jpg',
@@ -217,6 +227,7 @@
 						]
 					},
 					{
+						loadText: '上拉加载更多',
 						list: [
 							{
 								userpic: '../../static/demo/userpic/12.jpg',
@@ -271,11 +282,38 @@
 			},
 			swiperChange(e){
 				this.tabIndex = e.detail.current
+			},
+			// 上拉加载更多
+			loadMore(index){
+				if(this.dataList[index].loadText !== "上拉加载更多"){ return }
+				// 更改状态
+				this.dataList[index].loadText = "加载中..."
+				// 获取接口
+				setTimeout(() => {
+					// 获取完成
+					let obj = {
+						userpic: '../../static/demo/userpic/12.jpg',
+						username: '我是昵称',
+						isGuanzhu: true,
+						title: '我是标题测试我是标题测试我是标题测试',
+						type: 'img', // img video
+						titlePic: '../../static/demo/datapic/11.jpg',
+						info: {
+							dingNum: 10,
+							caiNum: 10,
+							index: 0,// 0 没有操作过 1 顶过 2 踩过
+						},
+						commentNum: 20, // 评论
+						shareNum: 20 // 转发
+					}
+					this.dataList[index].list.push(obj)
+					this.dataList[index].loadText = "上拉加载更多"
+				}, 1000);
+				// this.dataList[index].loadText = "没有更多数据了"
 			}
 		}
 	}
 </script>
   
 <style lang="stylus">
-
 </style>
