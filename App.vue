@@ -19,4 +19,6 @@
 	@import "./common/iconfont.css";
 	/* 引入css动画库 */
 	@import './common/animate.min.css';
+	/* 引入 ”样式库 */
+	@import './common/common.css';
 </style>

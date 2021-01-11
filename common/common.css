@@ -1,0 +1,15 @@
+.u-flex {
+  display: flex;
+}
+.u-flex.u-acenter {
+  align-items: center;
+}
+.u-flex.u-scenter {
+  justify-content: center;
+}
+.u-flex.u-jbetween {
+  justify-content: space-between;
+}
+.u-flex.u-jcenter {
+  justify-content: center;
+}
