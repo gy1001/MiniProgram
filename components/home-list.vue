@@ -64,7 +64,7 @@
 	}
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .index-list{
 	padding 20upx;
 	border-bottom solid 2upx #EEEEEE
