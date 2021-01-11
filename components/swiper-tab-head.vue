@@ -52,7 +52,8 @@
 		}
 	}
 }
-::-webkit-scrollbar {
+// 这里不加deep 就会出现滚动条，为何？？？
+/deep/ ::-webkit-scrollbar {
 	display:none;
 	width:0;
 	height:0;
