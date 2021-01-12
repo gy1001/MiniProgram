@@ -1,7 +1,6 @@
 <template>
 	<view class="no-data animated fadeIn">
-		<image src="@/static/image/no-data.png" mode="widthFix" lazy-load></image>
-		<div>这里什么都没有哦</div>
+		<image class="no-data-img" src="@/static/image/no-data.png" mode="widthFix" lazy-load></image>
 	</view>
 </template>
 
@@ -25,5 +24,8 @@
 	flex-direction column
 	align-items center
 	justify-content center
+	.no-data-img{
+		width 50%
+	}
 }
 </style>

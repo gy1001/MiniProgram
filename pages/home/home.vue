@@ -11,7 +11,7 @@
 						<template v-else>
 							<!-- 图文列表 -->
 							<block v-for="(item, index) in swiperItem.list" :key="index">
-								<home-list @toDetail="toDetail($event, swiperIndex)" @agree="agree($event, swiperIndex)" @disAgree="disAgree($event, swiperIndex)"  @follow="follow(swiperIndex, $event)" :item="item" :index="index"></home-list>
+								<home-list @toDetail="toDetail($event, swiperIndex)" @agree="agree($event, swiperIndex)" @disAgree="disAgree($event, swiperIndex)" @follow="follow(swiperIndex, $event)" :item="item" :index="index"></home-list>
 							</block>
 							<!-- 上拉加载更多 -->
 							<load-more :loadText="swiperItem.loadText"></load-more> 
@@ -40,24 +40,24 @@
 				contentHeight: 500,
 				tabIndex: 0,
 				tabBars: [
-					{ name: '关注',id: 'guanzhu' },
-					{ name: '推荐',id: 'tuijian' },
-					{ name: '体育',id: 'tiyu' },
-					{ name: '热点',id: 'redian' },
-					{ name: '军事',id: 'junshi' },
-					{ name: '财经',id: 'caijing' },
+					{ name: '关注', id: 'guanzhu' },
+					{ name: '推荐', id: 'tuijian' },
+					{ name: '体育', id: 'tiyu' },
+					{ name: '热点', id: 'redian' },
+					{ name: '军事', id: 'junshi' },
+					{ name: '财经', id: 'caijing' },
 				],
 				dataList: [
 					{
 						loadText: '上拉加载更多',
 						list: [
 							{
-								userpic: '../../static/demo/userpic/12.jpg',
+								userpic: require('@/static/demo/userpic/12.jpg'),
 								username: '昵称',
 								isGuanzhu: true,
 								title: '我是标题',
 								type: 'img', // img video
-								titlePic: '../../static/demo/datapic/11.jpg',
+								titlePic: require('@/static/demo/datapic/11.jpg'),
 								info: {
 									dingNum: 10,
 									caiNum: 10,
@@ -67,14 +67,14 @@
 								shareNum:10 // 转发
 							},
 							{
-								userpic: '../../static/demo/userpic/12.jpg',
+								userpic: require('@/static/demo/userpic/12.jpg'),
 								username: '昵称',
 								isGuanzhu: false,
 								title: '我是标题',
 								type: 'video', // img video
 								playNum: '20w',// 播放次数
 								long: "02:00",
-								titlePic: '../../static/demo/datapic/11.jpg',
+								titlePic: require('@/static/demo/datapic/11.jpg'),
 								info: {
 									dingNum: 10,
 									caiNum: 10,
@@ -89,12 +89,12 @@
 						loadText: '上拉加载更多',
 						list: [
 							{
-								userpic: '../../static/demo/userpic/12.jpg',
+								userpic: require('@/static/demo/userpic/12.jpg'),
 								username: '昵称',
 								isGuanzhu: true,
 								title: '我是标题',
 								type: 'img', // img video
-								titlePic: '../../static/demo/datapic/11.jpg',
+								titlePic: require('@/static/demo/datapic/11.jpg'),
 								info: {
 									dingNum: 10,
 									caiNum: 10,
@@ -104,14 +104,14 @@
 								shareNum:10 // 转发
 							},
 							{
-								userpic: '../../static/demo/userpic/12.jpg',
+								userpic: require('@/static/demo/userpic/12.jpg'),
 								username: '昵称',
 								isGuanzhu: false,
 								title: '我是标题',
 								type: 'video', // img video
 								playNum: '20w',// 播放次数
 								long: "02:00",
-								titlePic: '../../static/demo/datapic/11.jpg',
+								titlePic: require('@/static/demo/datapic/11.jpg'),
 								info: {
 									dingNum: 10,
 									caiNum: 10,
@@ -126,12 +126,12 @@
 						loadText: '上拉加载更多',
 						list: [
 							{
-								userpic: '../../static/demo/userpic/12.jpg',
+								userpic: require('@/static/demo/userpic/12.jpg'),
 								username: '昵称',
 								isGuanzhu: true,
 								title: '我是标题',
 								type: 'img', // img video
-								titlePic: '../../static/demo/datapic/11.jpg',
+								titlePic: require('@/static/demo/datapic/11.jpg'),
 								info: {
 									dingNum: 10,
 									caiNum: 10,
@@ -141,14 +141,14 @@
 								shareNum:10 // 转发
 							},
 							{
-								userpic: '../../static/demo/userpic/12.jpg',
+								userpic: require('@/static/demo/userpic/12.jpg'),
 								username: '昵称',
 								isGuanzhu: false,
 								title: '我是标题',
 								type: 'video', // img video
 								playNum: '20w',// 播放次数
 								long: "02:00",
-								titlePic: '../../static/demo/datapic/11.jpg',
+								titlePic: require('@/static/demo/datapic/11.jpg'),
 								info: {
 									dingNum: 10,
 									caiNum: 10,
@@ -163,12 +163,12 @@
 						loadText: '上拉加载更多',
 						list: [
 							{
-								userpic: '../../static/demo/userpic/12.jpg',
+								userpic: require('@/static/demo/userpic/12.jpg'),
 								username: '昵称',
 								isGuanzhu: true,
 								title: '我是标题',
 								type: 'img', // img video
-								titlePic: '../../static/demo/datapic/11.jpg',
+								titlePic: require('@/static/demo/datapic/11.jpg'),
 								info: {
 									dingNum: 10,
 									caiNum: 10,
@@ -178,14 +178,14 @@
 								shareNum:10 // 转发
 							},
 							{
-								userpic: '../../static/demo/userpic/12.jpg',
+								userpic: require('@/static/demo/userpic/12.jpg'),
 								username: '昵称',
 								isGuanzhu: false,
 								title: '我是标题',
 								type: 'video', // img video
 								playNum: '20w',// 播放次数
 								long: "02:00",
-								titlePic: '../../static/demo/datapic/11.jpg',
+								titlePic: require('@/static/demo/datapic/11.jpg'),
 								info: {
 									dingNum: 10,
 									caiNum: 10,
@@ -200,12 +200,12 @@
 						loadText: '上拉加载更多',
 						list: [
 							{
-								userpic: '../../static/demo/userpic/12.jpg',
+								userpic: require('@/static/demo/userpic/12.jpg'),
 								username: '昵称',
 								isGuanzhu: true,
 								title: '我是标题',
 								type: 'img', // img video
-								titlePic: '../../static/demo/datapic/11.jpg',
+								titlePic: require('@/static/demo/datapic/11.jpg'),
 								info: {
 									dingNum: 10,
 									caiNum: 10,
@@ -215,14 +215,14 @@
 								shareNum:10 // 转发
 							},
 							{
-								userpic: '../../static/demo/userpic/12.jpg',
+								userpic: require('@/static/demo/userpic/12.jpg'),
 								username: '昵称',
 								isGuanzhu: false,
 								title: '我是标题',
 								type: 'video', // img video
 								playNum: '20w',// 播放次数
 								long: "02:00",
-								titlePic: '../../static/demo/datapic/11.jpg',
+								titlePic: require('@/static/demo/datapic/11.jpg'),
 								info: {
 									dingNum: 10,
 									caiNum: 10,
@@ -305,12 +305,12 @@
 				setTimeout(() => {
 					// 获取完成
 					let obj = {
-						userpic: '../../static/demo/userpic/12.jpg',
+						userpic: require('@/static/demo/userpic/12.jpg'),
 						username: '我是昵称',
 						isGuanzhu: true,
 						title: '我是标题测试我是标题测试我是标题测试',
 						type: 'img', // img video
-						titlePic: '../../static/demo/datapic/11.jpg',
+						titlePic: require('@/static/demo/datapic/11.jpg'),
 						info: {
 							dingNum: 10,
 							caiNum: 10,

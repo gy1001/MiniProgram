@@ -475,29 +475,47 @@ var render = function() {
             ],
             1
           ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
-            [
-              _vm._$g(5, "i")
-                ? [_vm._v("已关注")]
-                : [
-                    _c("v-uni-view", {
-                      staticClass: _vm._$g(7, "sc"),
-                      attrs: { _i: 7 },
-                      on: {
-                        click: function($event) {
-                          return _vm.$handleViewEvent($event)
-                        }
-                      }
-                    }),
-                    _vm._v("关注")
-                  ]
-            ],
-            2
-          )
+          _vm._$g(4, "i")
+            ? _c(
+                "v-uni-view",
+                { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
+                [_vm._v("已关注")]
+              )
+            : _c(
+                "v-uni-view",
+                {
+                  staticClass: _vm._$g(5, "sc"),
+                  attrs: { _i: 5 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
+                [
+                  _c("v-uni-view", {
+                    staticClass: _vm._$g(6, "sc"),
+                    attrs: { _i: 6 }
+                  }),
+                  _vm._v("关注")
+                ],
+                1
+              )
         ],
         1
+      ),
+      _c(
+        "v-uni-view",
+        {
+          staticClass: _vm._$g(7, "sc"),
+          attrs: { _i: 7 },
+          on: {
+            click: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
+        [_vm._v(_vm._$g(7, "t0-0"))]
       ),
       _c(
         "v-uni-view",
@@ -510,38 +528,25 @@ var render = function() {
             }
           }
         },
-        [_vm._v(_vm._$g(8, "t0-0"))]
-      ),
-      _c(
-        "v-uni-view",
-        {
-          staticClass: _vm._$g(9, "sc"),
-          attrs: { _i: 9 },
-          on: {
-            click: function($event) {
-              return _vm.$handleViewEvent($event)
-            }
-          }
-        },
         [
           _c("v-uni-image", {
             attrs: {
-              src: _vm._$g(10, "a-src"),
+              src: _vm._$g(9, "a-src"),
               mode: "widthFix",
               "lazy-load": true,
-              _i: 10
+              _i: 9
             }
           }),
-          _vm._$g(11, "i")
+          _vm._$g(10, "i")
             ? [
                 _c("v-uni-view", {
-                  staticClass: _vm._$g(12, "sc"),
-                  attrs: { _i: 12 }
+                  staticClass: _vm._$g(11, "sc"),
+                  attrs: { _i: 11 }
                 }),
                 _c(
                   "v-uni-view",
-                  { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } },
-                  [_vm._v(_vm._$g(13, "t0-0") + "播放 " + _vm._$g(13, "t0-1"))]
+                  { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
+                  [_vm._v(_vm._$g(12, "t0-0") + "播放 " + _vm._$g(12, "t0-1"))]
                 )
               ]
             : _vm._e()
@@ -550,17 +555,17 @@ var render = function() {
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
+        { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } },
         [
           _c(
             "v-uni-view",
-            { attrs: { _i: 15 } },
+            { attrs: { _i: 14 } },
             [
               _c(
                 "v-uni-view",
                 {
-                  class: _vm._$g(16, "c"),
-                  attrs: { _i: 16 },
+                  class: _vm._$g(15, "c"),
+                  attrs: { _i: 15 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event)
@@ -569,18 +574,18 @@ var render = function() {
                 },
                 [
                   _c("v-uni-view", {
-                    staticClass: _vm._$g(17, "sc"),
-                    attrs: { _i: 17 }
+                    staticClass: _vm._$g(16, "sc"),
+                    attrs: { _i: 16 }
                   }),
-                  _vm._v(_vm._$g(16, "t1-0"))
+                  _vm._v(_vm._$g(15, "t1-0"))
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
                 {
-                  class: _vm._$g(18, "c"),
-                  attrs: { _i: 18 },
+                  class: _vm._$g(17, "c"),
+                  attrs: { _i: 17 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event)
@@ -589,10 +594,10 @@ var render = function() {
                 },
                 [
                   _c("v-uni-view", {
-                    staticClass: _vm._$g(19, "sc"),
-                    attrs: { _i: 19 }
+                    staticClass: _vm._$g(18, "sc"),
+                    attrs: { _i: 18 }
                   }),
-                  _vm._v(_vm._$g(18, "t1-0"))
+                  _vm._v(_vm._$g(17, "t1-0"))
                 ],
                 1
               )
@@ -601,29 +606,29 @@ var render = function() {
           ),
           _c(
             "v-uni-view",
-            { attrs: { _i: 20 } },
+            { attrs: { _i: 19 } },
             [
               _c(
                 "v-uni-view",
-                { attrs: { _i: 21 } },
+                { attrs: { _i: 20 } },
                 [
                   _c("v-uni-view", {
-                    staticClass: _vm._$g(22, "sc"),
-                    attrs: { _i: 22 }
+                    staticClass: _vm._$g(21, "sc"),
+                    attrs: { _i: 21 }
                   }),
-                  _vm._v(_vm._$g(21, "t1-0"))
+                  _vm._v(_vm._$g(20, "t1-0"))
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
-                { attrs: { _i: 23 } },
+                { attrs: { _i: 22 } },
                 [
                   _c("v-uni-view", {
-                    staticClass: _vm._$g(24, "sc"),
-                    attrs: { _i: 24 }
+                    staticClass: _vm._$g(23, "sc"),
+                    attrs: { _i: 23 }
                   }),
-                  _vm._v(_vm._$g(23, "t1-0"))
+                  _vm._v(_vm._$g(22, "t1-0"))
                 ],
                 1
               )
@@ -1740,14 +1745,14 @@ var render = function() {
     { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
     [
       _c("v-uni-image", {
+        staticClass: _vm._$g(1, "sc"),
         attrs: {
           src: "/static/image/no-data.png",
           mode: "widthFix",
           "lazy-load": true,
           _i: 1
         }
-      }),
-      _c("div", { attrs: { _i: 2 } }, [_vm._v("这里什么都没有哦")])
+      })
     ],
     1
   )
@@ -1840,7 +1845,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 15);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".no-data[data-v-1b78cc6a] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  color: #aaa;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n          justify-content: center;\n}\n", ""]);
+exports.push([module.i, ".no-data[data-v-1b78cc6a] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  color: #aaa;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n          justify-content: center;\n}\n.no-data .no-data-img[data-v-1b78cc6a] {\n  width: 50%;\n}\n", ""]);
 // Exports
 module.exports = exports;
 

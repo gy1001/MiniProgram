@@ -4,11 +4,11 @@
 			<view class="u-flex u-acenter">
 				<image :src="item.userpic" mode="widthFix" lazy-load></image>{{item.username}}
 			</view>
-			<view class="u-flex u-acenter">
-				<template v-if="item.isGuanzhu">已关注</template>
-				<template v-else>
-					<view @click="follow" class="icon iconfont icon-zengjia"></view>关注
-				</template>
+			<view class="u-flex u-acenter" v-if="item.isGuanzhu">
+				已关注
+			</view>
+			<view class="u-flex u-acenter" v-else @click="follow">
+				<view class="icon iconfont icon-zengjia"></view>关注
 			</view>
 		</view>
 		<view class="index-list2" @click="toDetail">{{item.title}}</view>

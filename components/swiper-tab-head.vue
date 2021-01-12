@@ -21,7 +21,7 @@
 				type: Array
 			},
 			tabIndex: {
-				default: [String, Number],
+				default: [Number],
 				type: 0
 			}
 		},
