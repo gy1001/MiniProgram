@@ -254,6 +254,15 @@
 				url: "/pages/search/search"
 			})
 		},
+		// 监听原生标题栏按钮点击事件，参数为Object
+		onNavigationBarButtonTap(event){
+			if(Number(event.index) === 1){
+				// 打开发布页面
+				uni.navigateTo({
+					url: '/pages/release/release'
+				})
+			}
+		},
 		methods: {
 			tabTap(index){
 				this.tabIndex = Number(index)
