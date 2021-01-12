@@ -249,6 +249,11 @@
 				}
 			})
 		}, 
+		onNavigationBarSearchInputClicked(){
+			uni.navigateTo({
+				url: "/pages/search/search"
+			})
+		},
 		methods: {
 			tabTap(index){
 				this.tabIndex = Number(index)

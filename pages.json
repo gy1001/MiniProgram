@@ -61,8 +61,39 @@
 				"navigationBarTitleText": "我的",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path" : "pages/search/search",
+			"style": {
+					"navigationBarTitleText": "搜索",
+					"enablePullDownRefresh": false,
+					"app-plus": {
+						"scrollIndicator": "none", // 隐藏滚动条
+						"bounce": "none", // 页面反弹效果
+						"titleNView": {
+							"autoBackButton": false,
+							"searchInput": {
+								"align": "center",
+								"backgroundColor": "#F7F7F7",
+								"borderRadius": "4px",
+								"placeholder": "搜索糗事",
+								"placeholderColor": "#CCCCCC",
+								"disabled": false
+							},
+							"buttons": [
+								{
+									"color": "#FF9619",
+									"colorPressed": "#BBBBBB",
+									"float": "right",
+									"fontSize": "16px",
+									"text": "取消"
+								}
+							]
+						}
+					}
+			}
 		}
-	],
+  ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "糗事",
