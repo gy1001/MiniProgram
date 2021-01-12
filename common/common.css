@@ -1,6 +1,9 @@
 .u-flex {
   display: flex;
 }
+.u-flex.flex-column {
+  flex-direction: column;
+}
 .u-flex.u-acenter {
   align-items: center;
 }

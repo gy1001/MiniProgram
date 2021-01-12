@@ -7,28 +7,58 @@
 				{{selectorText}} <view class="icon iconfont icon-xialazhankai"></view>
 			</view>
 		</uni-nav-bar>
-		<!-- 多行输入框 -->
 		<view class="uni-textarea">
+			<!-- 多行输入框 -->
 			<textarea class="text-container" :value="textAreaText" placeholder="说一句话吧" />
-		</view>
+			<!-- 上传多图 -->
+			<upload-imgs :maxCount="maxCount" @deleteImg="deleteImg" @chooseImage="chooseImage" :imageList="imageList"></upload-imgs></view>
+			<!-- 弹窗公告 -->
+			<uni-popup ref="uniPopup" type="center">
+				<view class="notice-container">
+					<image class="notice-img" src="../../static/image/notice.png" mode="widthFix"></image>
+					<view class="">
+						<view class="">1.涉及黄色、政治、广告及骚扰信息</view>
+						<view class="">2.涉及人身攻击</view>
+						<view class="">3.留联系方式，透露他人信息</view>
+						<view class="">一经核实将被封禁，情节严重者永久封禁</view>
+					</view>
+					<button @click="hidePopup" class="notice-btn" type="default">朕知道了</button>
+				</view>
+			</uni-popup>
 	</view>
 </template>
 
 <script>
-	import UniNavBar from '../../components/uni-nav-bar/uni-nav-bar.vue'
+	import UniNavBar from '../../components/uni-nav-bar/uni-nav-bar.vue';
+	import UplodImgs from '../../components/upload-imgs/upload-imgs.vue';
+	import UniPopup from '../../components/uni-popup/uni-popup.vue';
 	export default {
 		components: {
-			'uni-nav-bar': UniNavBar
+			'uni-nav-bar': UniNavBar,
+			"upload-imgs": UplodImgs,
+			'uni-popup': UniPopup
 		},
 		data() {
 			return {
 				selectorText: '所有人可见',
-				textAreaText: ''
+				textAreaText: '',
+				imageList: [],
+				maxCount: 9
 			};
 		},
+		onLoad() {
+			this.$nextTick(() => {
+				console.log(3222)
+				this.$refs.uniPopup.open()
+			})
+		},
 		methods: {
+			toJSON(){},
 			back() {
 				uni.navigateBack()
+			},
+			hidePopup(){
+				this.$refs.uniPopup.close()
 			},
 			release(){
 				console.log("release")
@@ -41,17 +71,18 @@
 						this.selectorText = listArr[res.tapIndex]
 					}
 				})
+			},
+			chooseImage(newList) {
+				this.imageList = newList;
+			},
+			deleteImg(index){
+				this.imageList.splice(index, 1)
 			}
 		}
 	}
 </script>
 
 <style lang="stylus">
-.self-title{
-	display flex
-	justify-content center
-	width 100%
-}
 .u-flex{
 	width 100%
 }
@@ -63,4 +94,21 @@
 		border solid 2upx #F2F2F2
 	}
 }
+.notice-container{
+	width 550upx
+	background-color #FFFFFF
+	border-radius 30upx
+	text-align center
+	padding 50upx 0
+	.notice-img{
+		width 50%
+	}
+	.notice-btn{
+		background-color #FFE934
+		width 400upx
+		margin-top 40upx
+		color #171606
+	}
+}
+
 </style>
