@@ -11,20 +11,21 @@
 			<!-- 多行输入框 -->
 			<textarea class="text-container" :value="textAreaText" placeholder="说一句话吧" />
 			<!-- 上传多图 -->
-			<upload-imgs :maxCount="maxCount" @deleteImg="deleteImg" @chooseImage="chooseImage" :imageList="imageList"></upload-imgs></view>
-			<!-- 弹窗公告 -->
-			<uni-popup ref="uniPopup" type="center">
-				<view class="notice-container">
-					<image class="notice-img" src="../../static/image/notice.png" mode="widthFix"></image>
-					<view class="">
-						<view class="">1.涉及黄色、政治、广告及骚扰信息</view>
-						<view class="">2.涉及人身攻击</view>
-						<view class="">3.留联系方式，透露他人信息</view>
-						<view class="">一经核实将被封禁，情节严重者永久封禁</view>
-					</view>
-					<button @click="hidePopup" class="notice-btn" type="default">朕知道了</button>
+			<upload-imgs :maxCount="maxCount" @deleteImg="deleteImg" @chooseImage="chooseImage" :imageList="imageList"></upload-imgs>
+		</view>
+		<!-- 弹窗公告 -->
+		<uni-popup ref="uniPopup" type="center">
+			<view class="notice-container">
+				<image class="notice-img" src="../../static/image/notice.png" mode="widthFix"></image>
+				<view class="">
+					<view class="">1.涉及黄色、政治、广告及骚扰信息</view>
+					<view class="">2.涉及人身攻击</view>
+					<view class="">3.留联系方式，透露他人信息</view>
+					<view class="">一经核实将被封禁，情节严重者永久封禁</view>
 				</view>
-			</uni-popup>
+				<button @click="hidePopup" class="notice-btn" type="default">朕知道了</button>
+			</view>
+		</uni-popup>
 	</view>
 </template>
 
@@ -43,7 +44,8 @@
 				selectorText: '所有人可见',
 				textAreaText: '',
 				imageList: [],
-				maxCount: 9
+				maxCount: 9,
+				hasShowPopup: false
 			};
 		},
 		onLoad() {
@@ -52,10 +54,41 @@
 				this.$refs.uniPopup.open()
 			})
 		},
+		onBackPress() {
+			// 如果用户有值
+			console.log(this.textAreaText, this.imageList.length)
+			if(!this.textAreaText && this.imageList.length < 1){
+				console.log(12222)
+				return false
+			}
+			if(!this.hasShowPopup){
+				this.saveAsDraft()
+				return true // return true时候阻止返回
+			}
+		},
 		methods: {
 			toJSON(){},
 			back() {
 				uni.navigateBack()
+			},
+			saveAsDraft() {
+				uni.showModal({
+					content: "是否要保存为草稿?",
+					cancelText: "不保存",
+					confirmText: "保存",
+					success:(res) => {
+						this.hasShowPopup = true
+						if(res.confirm){
+							// 保存
+							setTimeout(() => {
+								uni.navigateBack()
+							}, 1000)
+						}else{
+							// 不保存
+							uni.navigateBack()
+						}
+					}
+				})
 			},
 			hidePopup(){
 				this.$refs.uniPopup.close()
