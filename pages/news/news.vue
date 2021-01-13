@@ -28,14 +28,19 @@
 					</view>
 					<view class="guanzhu-btn icon iconfont icon-zengjia">关注</view>
 				</view>
-				<view class="common-list-title">我是标题我是标题我是标题</view>
-				<view class="video-img-box u-flex u-acenter u-jcenter">
+				<view class="common-list-title">我是标题我是标题我是标题</view> 
+				<view class="video-img-box u-flex u-acenter u-jcenter" v-if="false">
 					<image src="../../static/demo/datapic/13.jpg" mode="widthFix" lazy-load />
 					<!-- 视频 -->
 					<view class="list-video-play icon iconfont icon-bofang"></view>
 					<view class="list-video-info">
 						20w播放 02：00
 					</view>
+				</view>
+				<!-- 分享的样式 -->
+				<view class="common-list-share u-flex u-acenter">
+					<image class="list-share-img" src="../../static/demo/datapic/14.jpg" mode="widthFix" lazy-load></image>
+					<view class="">我是标题我是标题我是标题我是标题我是标题我是标题</view>
 				</view>
 				<view class="u-flex u-jbetween list-bottom">
 					<view class="list-bottom-left">深圳龙岗</view>
@@ -117,7 +122,7 @@
 		}
 	}
 }
-.nav-right{
+.nav-right{ 
 	text-align center
 	.icon-bianji{
 		font-size 50upx
@@ -180,6 +185,18 @@
 				border-radius 40upx
 				padding 0 20upx
 				font-size 25upx
+			}
+		}
+		.common-list-share{
+			width 100%
+			padding 10upx
+			background-color #EEEEEE
+			border-radius 10upx
+			box-sizing border-box
+			.list-share-img{
+				width 200upx
+				height 150upx
+				margin-right 10upx
 			}
 		}
 		.list-bottom{
