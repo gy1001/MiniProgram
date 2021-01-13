@@ -17,49 +17,19 @@
 			</view>
 		</uni-nav-bar>
 		<!-- 列表 -->
-		<view class="common-list u-flex">
-			<view class="common--list-left">
-				<image class="common-list-avatar" src="../../static/demo/userpic/12.jpg" mode="widthFix" lazy-load></image>
-			</view>
-			<view class="common-list-right">
-				<view class="u-flex u-jbetween">
-					<view class="info-box u-flex u-acenter">
-						昵称<view class="gender-box icon iconfont icon-nan">25</view>
-					</view>
-					<view class="guanzhu-btn icon iconfont icon-zengjia">关注</view>
-				</view>
-				<view class="common-list-title">我是标题我是标题我是标题</view> 
-				<view class="video-img-box u-flex u-acenter u-jcenter" v-if="false">
-					<image src="../../static/demo/datapic/13.jpg" mode="widthFix" lazy-load />
-					<!-- 视频 -->
-					<view class="list-video-play icon iconfont icon-bofang"></view>
-					<view class="list-video-info">
-						20w播放 02：00
-					</view>
-				</view>
-				<!-- 分享的样式 -->
-				<view class="common-list-share u-flex u-acenter">
-					<image class="list-share-img" src="../../static/demo/datapic/14.jpg" mode="widthFix" lazy-load></image>
-					<view class="">我是标题我是标题我是标题我是标题我是标题我是标题</view>
-				</view>
-				<view class="u-flex u-jbetween list-bottom">
-					<view class="list-bottom-left">深圳龙岗</view>
-					<view class="u-flex u-acenter list-bottom-right">
-						<view class="icon iconfont icon-zhuanfa"></view>10
-						<view class="icon iconfont icon-pinglun"></view>20
-						<view class="icon iconfont icon-dianzan"></view>30
-					</view>
-				</view>
-			</view>
-		</view>
+		<block v-for="(item, itemIndex) in contentList" :key="itemIndex">
+			<news-list :itemInfo="item"></news-list>
+		</block>
 	</view>
 </template>
 
 <script>
 	import UniNavBar from '../../components/uni-nav-bar/uni-nav-bar.vue'
+	import NewsList from '../../components/news-list/news-list.vue'
 	export default {
 		components: {
 			'uni-nav-bar': UniNavBar,
+			'news-list': NewsList
 		},
 		data() {
 			return {
@@ -67,6 +37,55 @@
 				tabList: [
 					{ name: '关注', id: '1' },
 					{ name: '话题', id: '2' },
+				],
+				contentList: [
+					{
+						userpic: require('../../static/demo/userpic/12.jpg'),
+						username: '昵称',
+						gender: 1, // 0男1女
+						age: 25,
+						isGuanzhu: false,
+						title: '我是标题',
+						titlePic: require("../../static/demo/datapic/13.jpg"),
+						type: 'video',// video img share
+						videoInfo: {
+							playNum: '20w',
+							duration: '02:00'
+						},
+						address: '深圳龙岗',
+						shareNum: 20,
+						commentNum: 20,
+						praiseNum: 20
+					},
+					{
+						userpic: require('../../static/demo/userpic/12.jpg'),
+						username: '昵称',
+						gender: 0, // 0男1女
+						age: 25,
+						isGuanzhu: false,
+						title: '我是标题',
+						type: 'img',// video img share
+						titlePic: require("../../static/demo/datapic/13.jpg"),
+						address: '深圳龙岗',
+						shareNum: 20,
+						commentNum: 20,
+						praiseNum: 20
+					},
+					{
+						userpic: require('../../static/demo/userpic/12.jpg'),
+						username: '昵称',
+						gender: 0, // 0男1女
+						age: 25,
+						isGuanzhu: false,
+						title: '分享标题',
+						shareContent: '分享内容',
+						type: 'share',// video img share
+						titlePic: require("../../static/demo/datapic/13.jpg"),
+						address: '深圳龙岗',
+						shareNum: 20,
+						commentNum: 20,
+						praiseNum: 20
+					},
 				]
 			};
 		},
@@ -126,92 +145,6 @@
 	text-align center
 	.icon-bianji{
 		font-size 50upx
-	}
-}
-.common-list{
-	padding 20upx
-	box-sizing border-box
-	.common--list-left{
-		.common-list-avatar{
-			width 90upx
-			height 90upx
-			border-radius 100%
-		}
-	}
-	.common-list-right{
-		flex 2
-		margin-left 20upx
-		border-bottom solid 1px #EEEEEE
-		padding-bottom 10upx
-		image{
-			width 100%
-			border-radius 10upx
-		}
-		.info-box{
-			color #999999
-			font-size 30upx
-			.gender-box{
-				background-color #007AFF
-				color #FFFFFF
-				font-size 23upx
-				padding 5upx 10upx
-				margin-left 10upx
-				border-radius 20upx
-				line-height 22upx
-			}
-		}
-		.guanzhu-btn{
-			background-color #EEEEEE
-			padding 0 10upx
-			font-size 26upx
-		}
-		.common-list-title{
-			font-size 32upx
-			padding 12upx 0
-		}
-		.video-img-box{
-			position relative
-			.list-video-play{
-				position absolute
-				font-size 140upx
-				color #FFFFFF 
-			}
-			.list-video-info{
-				position absolute
-				background-color rgba(51,51,51,0.72)
-				color #FFFFFF
-				bottom 8upx
-				right 8upx
-				border-radius 40upx
-				padding 0 20upx
-				font-size 25upx
-			}
-		}
-		.common-list-share{
-			width 100%
-			padding 10upx
-			background-color #EEEEEE
-			border-radius 10upx
-			box-sizing border-box
-			.list-share-img{
-				width 200upx
-				height 150upx
-				margin-right 10upx
-			}
-		}
-		.list-bottom{
-			color #AAAAAA
-			margin-top 10upx
-			.list-bottom-left{
-				
-			}
-			.list-bottom-right{
-				view.icon{
-					margin-left 15upx
-					padding-right 5upx
-				}
-			}
-		}
 	}
 }
 </style>
