@@ -33,7 +33,7 @@
 	}
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .swiper-tab-list{
 	color #969696
 	font-weight bold

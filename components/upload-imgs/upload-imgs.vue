@@ -96,7 +96,7 @@
 	}
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .uni-list{
 	// padding: 22rpx 30rpx;
 	box-sizing border-box

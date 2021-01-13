@@ -14,7 +14,7 @@
 	}
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .no-data{
 	position absolute
 	width 100%

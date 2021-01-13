@@ -59,7 +59,7 @@
 	}
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 
 .common-list{
 	padding 20upx
