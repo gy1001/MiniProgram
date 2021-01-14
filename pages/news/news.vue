@@ -196,7 +196,6 @@
 	}
 	.placeholder-class{
 		text-align center
-		color red
 		font-size 28upx
 		&::before{
 			padding-right 5upx
