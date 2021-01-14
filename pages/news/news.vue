@@ -16,8 +16,14 @@
 				</scroll-view>
 			</swiper-item>
 			<swiper-item>
-				<scroll-view class="list-scroll-view list" :scroll-y="true" :style="{height: contentHeight + 'px' }">
-					话题
+				<scroll-view class="list-scroll-view huati list" :scroll-y="true" :style="{height: contentHeight + 'px' }">
+					<!-- 搜索框 -->
+					<view class="search-box">
+						<input class="uni-input search-input" type="text" placeholder-class="placeholder-class icon iconfont icon-sousuo" placeholder="搜索内容" />
+					</view>
+					<!-- 轮播提 -->
+					<!-- 热们分类 -->
+					<!-- 最近更新 -->
 				</scroll-view>
 			</swiper-item>
 		</swiper>
@@ -47,8 +53,8 @@
 		data() {
 			return {
 				contentHeight: 500,
-				currentTab: "1",
-				swiperIndex: 0,
+				currentTab: "2",
+				swiperIndex: 1,
 				tabList: [
 					{ name: '关注', id: '1' },
 					{ name: '话题', id: '2' },
@@ -178,5 +184,23 @@
 <style lang="stylus">
 .list-scroll-view{
 	position relative
+	&.huati{
+		padding 20upx
+		box-sizing border-box
+	}
+}
+.search-box{
+	.search-input{
+		background-color #F4F4F4
+		border-radius 30upx
+	}
+	.placeholder-class{
+		text-align center
+		color red
+		font-size 28upx
+		&::before{
+			padding-right 5upx
+		}
+	}
 }
 </style>
