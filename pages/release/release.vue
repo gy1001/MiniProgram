@@ -48,11 +48,8 @@
 				hasShowPopup: false
 			};
 		},
-		onLoad() {
-			this.$nextTick(() => {
-				console.log(3222)
-				this.$refs.uniPopup.open()
-			})
+		mounted() {
+			this.$refs.uniPopup.open()
 		},
 		onBackPress() {
 			// 如果用户有值

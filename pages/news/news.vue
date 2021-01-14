@@ -16,24 +16,27 @@
 				</scroll-view>
 			</swiper-item>
 			<swiper-item>
-				<scroll-view class="list-scroll-view huati list" :scroll-y="true" :style="{height: contentHeight + 'px' }">
+				<scroll-view class="list-scroll-view list" :scroll-y="true" :style="{height: contentHeight + 'px' }">
 					<!-- 搜索框 -->
 					<view class="search-box">
 						<input class="uni-input search-input" type="text" placeholder-class="placeholder-class icon iconfont icon-sousuo" placeholder="搜索内容" />
 					</view>
 					<!-- 轮播图 -->
 					<swiper class="topic-swiper-outer" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
-						<swiper-item>
-							<image src="../../static/demo/banner1.jpg" mode="widthFix" lazy-load></image>
-						</swiper-item>
-						<swiper-item>
-							<image src="../../static/demo/banner2.jpg" mode="widthFix" lazy-load></image>
-						</swiper-item>
-						<swiper-item>
-							<image src="../../static/demo/banner1.jpg" mode="widthFix" lazy-load></image>
+						<swiper-item v-for="swiperImg in topicSwiperList" :key="swiperImg">
+							<image :src="swiperImg" mode="widthFix" lazy-load></image>
 						</swiper-item>
 					</swiper>
 					<!-- 热们分类 -->
+					<view class="popular-kind-box">
+						<view class="u-flex u-acenter u-jbetween">
+							<view class="">热门分类</view>
+							<view class="u-flex u-acenter more-text">更多<view class="icon iconfont icon-jinru"></view></view>
+						</view>
+						<scroll-view class="u-flex u-acenter topic-item-box" :scroll-x="true" :show-scrollbar="false">
+							<view class="topic-item" v-for="item in topicListArr" :key="item">{{item}}</view>
+						</scroll-view>
+					</view>
 					<!-- 最近更新 -->
 				</scroll-view>
 			</swiper-item>
@@ -126,7 +129,16 @@
 					],
 					loadText: '上拉加载更多'
 				},
-				
+				topicSwiperList: [
+					require('../../static/demo/banner1.jpg'),
+					require('../../static/demo/banner2.jpg'),
+					require('../../static/demo/banner4.jpg'),
+				],
+				topicListObj: {
+					list: [],
+					loadText: '上拉加载更多'
+				},
+				topicListArr: ["最新","游戏","打卡","情感","故事","喜爱"]
 			};
 		},
 		methods:{
@@ -188,19 +200,17 @@
 					this.followListObj.loadText = "上拉加载更多"
 				}, 1000);
 			}
-		}
+		},
 	}
 </script>
 
 <style lang="stylus">
 .list-scroll-view{
 	position relative
-	&.huati{
-		padding 20upx
-		box-sizing border-box
-	}
 }
 .search-box{
+	padding 20upx
+	box-sizing border-box
 	.search-input{
 		background-color #F4F4F4
 		border-radius 30upx
@@ -215,10 +225,48 @@
 }
 .topic-swiper-outer{
 	padding 20upx
+	height 334upx
+	overflow hidden
 	image{
-		width 100%
 		border-radius 10upx
-		height auto
+		width 100%
+		height 334upx
+		overflow hidden
 	}
+}
+.popular-kind-box{
+	border-bottom solid 1upx red
+	border-top solid 1upx #EEEEEE
+	padding 10upx 20upx 10upx 20upx
+	view:first-child{
+		font-size 32upx
+		.more-text{
+			color #9E9E9E
+		}
+	}
+	.topic-item-box{
+		overflow-x auto
+		padding 10upx 0
+		/deep/ .uni-scroll-view-content{
+			display flex
+		}
+		.topic-item{
+			background-color #EEEEEE
+			flex-shrink: 0
+			flex-basis: 15%
+			white-space: nowrap 
+			text-align center
+			color #9E9E9E
+			margin-right 20upx
+			border-radius 8upx
+		}
+	}
+}
+// 这里不加deep 就会出现滚动条，为何？？？
+/deep/ ::-webkit-scrollbar {
+	display:none;
+	width:0;
+	height:0;
+	color:transparent;
 }
 </style>
