@@ -3,16 +3,21 @@
 		<news-nav-bar @clickLeft="clickLeft" @clickRight="clickRight" :tabList="tabList" :currentTab="currentTab" @toggleTab="toggleTab"></news-nav-bar>
 		<!-- 列表 -->
 		<swiper @change="swiperChange" :style="{height: contentHeight + 'px' }" :current="swiperIndex">
-			<swiper-item v-for="tabItem in tabList" :key="tabItem.id">
-				<scroll-view @scrolltolower="loadMore" class="list-scroll-view list" :scroll-y="true" :style="{height: contentHeight + 'px' }">
-					<template v-if="contentListObj[tabItem.id].list.length > 0">
-						<block v-for="(item, itemIndex) in contentListObj[tabItem.id].list" :key="itemIndex">
+			<swiper-item>
+				<scroll-view @scrolltolower="followLoadMore" class="list-scroll-view list" :scroll-y="true" :style="{height: contentHeight + 'px' }">
+					<template v-if="followListObj.list.length > 0">
+						<block v-for="(item, itemIndex) in followListObj.list" :key="itemIndex">
 							<news-list @follow="follow(itemIndex)" @praise="praise($event, itemIndex)" :itemInfo="item"></news-list>
 						</block>
 						<!-- 上拉加载更多 -->
-						<load-more :loadText="contentListObj[tabItem.id].loadText"></load-more> 
+						<load-more :loadText="followListObj.loadText"></load-more> 
 					</template>
 					<no-data v-else></no-data>
+				</scroll-view>
+			</swiper-item>
+			<swiper-item>
+				<scroll-view class="list-scroll-view list" :scroll-y="true" :style="{height: contentHeight + 'px' }">
+					话题
 				</scroll-view>
 			</swiper-item>
 		</swiper>
@@ -49,65 +54,60 @@
 					{ name: '话题', id: '2' },
 				],
 				loadText: '',
-				contentListObj: {
-					1: {
-						list: [
-							{
-								userpic: require('../../static/demo/userpic/12.jpg'),
-								username: '昵称',
-								gender: 1, // 0男1女
-								age: 25,
-								isGuanzhu: true,
-								title: '我是标题',
-								titlePic: require("../../static/demo/datapic/13.jpg"),
-								type: 'video',// video img share
-								videoInfo: {
-									playNum: '20w',
-									duration: '02:00'
-								},
-								address: '深圳龙岗',
-								shareNum: 20,
-								commentNum: 20,
-								isPraise: false,
-								praiseNum: 20
+				followListObj: {
+					list: [
+						{
+							userpic: require('../../static/demo/userpic/12.jpg'),
+							username: '昵称',
+							gender: 1, // 0男1女
+							age: 25,
+							isGuanzhu: true,
+							title: '我是标题',
+							titlePic: require("../../static/demo/datapic/13.jpg"),
+							type: 'video',// video img share
+							videoInfo: {
+								playNum: '20w',
+								duration: '02:00'
 							},
-							{
-								userpic: require('../../static/demo/userpic/12.jpg'),
-								username: '昵称',
-								gender: 0, // 0男1女
-								age: 25,
-								isGuanzhu: false,
-								title: '我是标题',
-								type: 'img',// video img share
-								titlePic: require("../../static/demo/datapic/13.jpg"),
-								address: '深圳龙岗',
-								shareNum: 20,
-								commentNum: 20,
-								isPraise: true,
-								praiseNum: 20
-							},
-							{
-								userpic: require('../../static/demo/userpic/12.jpg'),
-								username: '昵称',
-								gender: 0, // 0男1女
-								age: 25,
-								isGuanzhu: false,
-								title: '分享标题',
-								shareContent: '分享内容',
-								type: 'share',// video img share
-								titlePic: require("../../static/demo/datapic/13.jpg"),
-								address: '深圳龙岗',
-								shareNum: 20,
-								commentNum: 20,
-								isPraise: false,
-								praiseNum: 20
-							},
-						],
-						loadText: '上拉加载更多'
-					},
-					2: {
-						list: []
-					}
+							address: '深圳龙岗',
+							shareNum: 20,
+							commentNum: 20,
+							isPraise: false,
+							praiseNum: 20
+						},
+						{
+							userpic: require('../../static/demo/userpic/12.jpg'),
+							username: '昵称',
+							gender: 0, // 0男1女
+							age: 25,
+							isGuanzhu: false,
+							title: '我是标题',
+							type: 'img',// video img share
+							titlePic: require("../../static/demo/datapic/13.jpg"),
+							address: '深圳龙岗',
+							shareNum: 20,
+							commentNum: 20,
+							isPraise: true,
+							praiseNum: 20
+						},
+						{
+							userpic: require('../../static/demo/userpic/12.jpg'),
+							username: '昵称',
+							gender: 0, // 0男1女
+							age: 25,
+							isGuanzhu: false,
+							title: '分享标题',
+							shareContent: '分享内容',
+							type: 'share',// video img share
+							titlePic: require("../../static/demo/datapic/13.jpg"),
+							address: '深圳龙岗',
+							shareNum: 20,
+							commentNum: 20,
+							isPraise: false,
+							praiseNum: 20
+						},
+					],
+					loadText: '上拉加载更多'
 				},
 				
 			};
@@ -146,7 +146,7 @@
 				this.swiperIndex = e.detail.current
 				this.currentTab = this.tabList[this.swiperIndex].id
 			},
-			loadMore(tabIndex){
+			followLoadMore(){
 				const newItemInfo = 	{
 					userpic: require('../../static/demo/userpic/12.jpg'),
 					username: '添加昵称',
@@ -162,13 +162,13 @@
 					isPraise: true,
 					praiseNum: 20
 				}
-				if(this.contentListObj[this.currentTab].loadText !== "上拉加载更多"){
+				if(this.followListObj.loadText !== "上拉加载更多"){
 					return
 				}
-				this.contentListObj[this.currentTab].loadText = "加载中..."
+				this.followListObj.loadText = "加载中..."
 				setTimeout(() => {
-					this.contentListObj[this.currentTab].list.push(newItemInfo)
-					this.contentListObj[this.currentTab].loadText = "上拉加载更多"
+					this.followListObj.list.push(newItemInfo)
+					this.followListObj.loadText = "上拉加载更多"
 				}, 1000);
 			}
 		}
