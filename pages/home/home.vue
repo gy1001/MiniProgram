@@ -328,7 +328,7 @@
 	}
 </script>
   
-<style lang="stylus">
+<style lang="stylus" scoped> 
 .list-scroll-view{
 	position relative
 }

@@ -28,6 +28,6 @@
 	}
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 
 </style>

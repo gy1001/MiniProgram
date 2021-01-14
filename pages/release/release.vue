@@ -112,7 +112,7 @@
 	}
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .u-flex{
 	width 100%
 }

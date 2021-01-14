@@ -30,7 +30,7 @@
 					<!-- 热们分类 -->
 					<view class="popular-kind-box">
 						<view class="u-flex u-acenter u-jbetween">
-							<view class="">热门分类</view>
+							<view class="popular-title">热门分类</view>
 							<view class="u-flex u-acenter more-text">更多<view class="icon iconfont icon-jinru"></view></view>
 						</view>
 						<scroll-view class="u-flex u-acenter topic-item-box" :scroll-x="true" :show-scrollbar="false">
@@ -204,7 +204,7 @@
 	}
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .list-scroll-view{
 	position relative
 }
@@ -239,7 +239,7 @@
 	border-top solid 1upx #EEEEEE
 	padding 10upx 20upx 10upx 20upx
 	view:first-child{
-		font-size 32upx
+		font-size 30upx
 		.more-text{
 			color #9E9E9E
 		}
