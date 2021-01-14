@@ -31,7 +31,7 @@
 					<view class="popular-kind-box">
 						<view class="u-flex u-acenter u-jbetween">
 							<view class="popular-title">热门分类</view>
-							<view class="u-flex u-acenter more-text">更多<view class="icon iconfont icon-jinru"></view></view>
+							<view @click="toLookMore" class="u-flex u-acenter more-text">更多<view class="icon iconfont icon-jinru"></view></view>
 						</view>
 						<scroll-view class="u-flex u-acenter topic-item-box" :scroll-x="true" :show-scrollbar="false">
 							<view class="topic-item" v-for="item in topicListArr" :key="item">{{item}}</view>
@@ -237,6 +237,11 @@
 					this.followListObj.list.push(newItemInfo)
 					this.followListObj.loadText = "上拉加载更多"
 				}, 1000);
+			},
+			toLookMore(){
+				uni.navigateTo({
+					url: '/pages/topic-nav/topic-nav'
+				})
 			}
 		},
 	}

@@ -106,8 +106,18 @@
 					
 				}
 			}
+		},
+		{
+			"path" : "pages/topic-nav/topic-nav",
+			"style": {
+				"navigationBarTitleText": "话题分类",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+						"bounce": "none"
+				}
+			}
 		}
-   ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "糗事",
