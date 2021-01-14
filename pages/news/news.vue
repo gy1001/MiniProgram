@@ -21,7 +21,18 @@
 					<view class="search-box">
 						<input class="uni-input search-input" type="text" placeholder-class="placeholder-class icon iconfont icon-sousuo" placeholder="搜索内容" />
 					</view>
-					<!-- 轮播提 -->
+					<!-- 轮播图 -->
+					<swiper class="topic-swiper-outer" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
+						<swiper-item>
+							<image src="../../static/demo/banner1.jpg" mode="widthFix" lazy-load></image>
+						</swiper-item>
+						<swiper-item>
+							<image src="../../static/demo/banner2.jpg" mode="widthFix" lazy-load></image>
+						</swiper-item>
+						<swiper-item>
+							<image src="../../static/demo/banner1.jpg" mode="widthFix" lazy-load></image>
+						</swiper-item>
+					</swiper>
 					<!-- 热们分类 -->
 					<!-- 最近更新 -->
 				</scroll-view>
@@ -200,6 +211,14 @@
 		&::before{
 			padding-right 5upx
 		}
+	}
+}
+.topic-swiper-outer{
+	padding 20upx
+	image{
+		width 100%
+		border-radius 10upx
+		height auto
 	}
 }
 </style>
