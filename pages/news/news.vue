@@ -18,7 +18,7 @@
 		</uni-nav-bar>
 		<!-- 列表 -->
 		<block v-for="(item, itemIndex) in contentList" :key="itemIndex">
-			<news-list :itemInfo="item"></news-list>
+			<news-list @follow="follow(itemIndex)" @praise="praise($event, itemIndex)" :itemInfo="item"></news-list>
 		</block>
 	</view>
 </template>
@@ -44,7 +44,7 @@
 						username: '昵称',
 						gender: 1, // 0男1女
 						age: 25,
-						isGuanzhu: false,
+						isGuanzhu: true,
 						title: '我是标题',
 						titlePic: require("../../static/demo/datapic/13.jpg"),
 						type: 'video',// video img share
@@ -55,6 +55,7 @@
 						address: '深圳龙岗',
 						shareNum: 20,
 						commentNum: 20,
+						isPraise: false,
 						praiseNum: 20
 					},
 					{
@@ -69,6 +70,7 @@
 						address: '深圳龙岗',
 						shareNum: 20,
 						commentNum: 20,
+						isPraise: true,
 						praiseNum: 20
 					},
 					{
@@ -84,6 +86,7 @@
 						address: '深圳龙岗',
 						shareNum: 20,
 						commentNum: 20,
+						isPraise: false,
 						praiseNum: 20
 					},
 				]
@@ -103,6 +106,23 @@
 				uni.navigateTo({
 					url: '/pages/release/release'
 				})
+			},
+			// 关注某人
+			follow(itemIndex) {
+				uni.showToast({
+					title: "关注成功"
+				})
+				this.contentList[itemIndex].isGuanzhu = true
+			},
+			// 点赞
+			praise(typeBol, index) {
+				if(typeBol){
+					this.contentList[index].isPraise = false
+					this.contentList[index].praiseNum--
+					return
+				}
+				this.contentList[index].isPraise = true
+				this.contentList[index].praiseNum++
 			}
 		}
 	}

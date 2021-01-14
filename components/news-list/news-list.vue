@@ -1,5 +1,5 @@
 <template>
-	<view class="common-list u-flex">
+	<view class="common-list u-flex animated fadeInLeft">
 		<view class="common--list-left">
 			<image class="common-list-avatar" :src="itemInfo.userpic" mode="widthFix" lazy-load></image>
 		</view>
@@ -12,7 +12,8 @@
 						:class="{'icon-nan': itemInfo.gender == 0, 'icon-nv': itemInfo.gender == 1}"
 					>{{itemInfo.age}}</view>
 				</view>
-				<view class="guanzhu-btn icon iconfont icon-zengjia">关注</view>
+				<view v-if="itemInfo.isGuanzhu" class="guanzhu-btn u-flex u-acenter">已关注</view>
+				<view @click="follow" v-else class="guanzhu-btn u-flex u-acenter icon iconfont icon-zengjia">关注</view>
 			</view>
 			<view class="common-list-title">{{itemInfo.title}}</view> 
 			<!-- 分享的样式 -->
@@ -34,9 +35,10 @@
 			<view class="u-flex u-jbetween list-bottom">
 				<view class="list-bottom-left">{{itemInfo.address}}</view>
 				<view class="u-flex u-acenter list-bottom-right">
-					<view class="icon iconfont icon-zhuanfa"></view>{{itemInfo.shareNum}}
-					<view class="icon iconfont icon-pinglun"></view>{{itemInfo.commentNum}}
-					<view class="icon iconfont icon-dianzan"></view>{{itemInfo.praiseNum}}
+					<view class="icon iconfont icon-zhuanfa">{{itemInfo.shareNum}}</view>
+					<view class="icon iconfont icon-pinglun">{{itemInfo.commentNum}}</view>
+						<!-- 点赞 -->
+					<view @click="praise" class="icon iconfont icon-dianzan" :class="{active: itemInfo.isPraise}">{{itemInfo.praiseNum}}</view>
 				</view>
 			</view>
 		</view>
@@ -54,6 +56,14 @@
 			itemInfo: {
 				type: Object,
 				default: {}
+			}
+		},
+		methods: {
+			follow(){
+				this.$emit("follow")
+			},
+			praise(){
+				this.$emit("praise",this.itemInfo.isPraise)
 			}
 		}
 	}
@@ -91,13 +101,17 @@
 				margin-left 10upx
 				border-radius 20upx
 				line-height 24upx
-				height 22upx
+				&.icon-nv{
+					background-color pink
+				}
 			}
 		}
 		.guanzhu-btn{
 			background-color #EEEEEE
 			padding 0 10upx
 			font-size 26upx
+			border-radius 10upx
+			vertical-align bottom
 		}
 		.common-list-title{
 			font-size 32upx
@@ -141,8 +155,15 @@
 			}
 			.list-bottom-right{
 				view.icon{
-					margin-left 15upx
-					padding-right 5upx
+					margin-left 16upx
+					&::before{
+						padding-right 4upx
+					}
+				}
+				.icon-dianzan{
+					&.active{
+						color #4CD964
+					}
 				}
 			}
 		}
