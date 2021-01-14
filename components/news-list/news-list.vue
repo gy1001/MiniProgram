@@ -156,6 +156,7 @@
 			.list-bottom-right{
 				view.icon{
 					margin-left 16upx
+					font-size 28upx
 					&::before{
 						padding-right 4upx
 					}
