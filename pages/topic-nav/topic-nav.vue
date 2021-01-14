@@ -9,7 +9,7 @@
 						<view v-else class="list-scroll-view">
 							<!-- 话题列表 -->
 							<block v-for="(item, index) in swiperItem.list" :key="index">
-								<topic-list :topicItem="item"></topic-list>
+								<topic-list @toDetail="toDetail" :topicItem="item"></topic-list>
 							</block>
 							<!-- 上拉加载更多 -->
 							<load-more :loadText="swiperItem.loadText"></load-more> 
@@ -130,6 +130,12 @@
 			},
 			swiperChange(e){
 				this.tabIndex = e.detail.current
+			},
+			// 去详情页面
+			toDetail(){
+				uni.navigateTo({
+					url: "/pages/topic-detail/topic-detail"
+				})
 			},
 			// 上拉加载更多
 			loadMore(index){

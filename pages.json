@@ -116,6 +116,23 @@
 						"bounce": "none"
 				}
 			}
+		},
+		{
+			"path" : "pages/topic-detail/topic-detail",
+			"style": {
+				"navigationBarTitleText": "话题详情",
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent", // 渐变
+						"buttons": [
+							{
+								"type": "menu"
+							}
+						]
+					},
+					"scrollIndicator": "none" // 隐藏滚动条
+				}
+			}
 		}
 	],
 	"globalStyle": {
