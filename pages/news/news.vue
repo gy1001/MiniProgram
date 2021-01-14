@@ -38,6 +38,12 @@
 						</scroll-view>
 					</view>
 					<!-- 最近更新 -->
+					<view class="topic-lastest-container">
+						<view class="topic-lastest-title">最近更新</view>
+						<block v-for="topicItem in topicLastestList" :key="topicItem.title"> 
+							<topic-list :topicItem="topicItem"></topic-list>
+						</block>
+					</view>
 				</scroll-view>
 			</swiper-item>
 		</swiper>
@@ -49,12 +55,14 @@
 	import NewsList from '../../components/news-list/news-list.vue'
 	import LoadMore from '../../components/load-more.vue'
 	import NoData from '../../components/no-data.vue'
+	import TopicList from '../../components/topic-list/topic-list.vue'
 	export default {
 		components: {
 			'news-nav-bar': NewsNavBar,
 			'news-list': NewsList,
 			'load-more': LoadMore,
-			'no-data': NoData
+			'no-data': NoData,
+			'topic-list': TopicList
 		},
 		onLoad() {
 			uni.getSystemInfo({
@@ -67,8 +75,8 @@
 		data() {
 			return {
 				contentHeight: 500,
-				currentTab: "2",
-				swiperIndex: 1,
+				currentTab: "1",
+				swiperIndex: 0,
 				tabList: [
 					{ name: '关注', id: '1' },
 					{ name: '话题', id: '2' },
@@ -138,7 +146,37 @@
 					list: [],
 					loadText: '上拉加载更多'
 				},
-				topicListArr: ["最新","游戏","打卡","情感","故事","喜爱"]
+				topicListArr: ["最新","游戏","打卡","情感","故事","喜爱"],
+				topicLastestList: [
+					{
+						titlePic: require("../../static/demo/topicpic/13.jpeg"),
+						title: '我是标题',
+						desc: '我是描述',
+						totalNum: 100,
+						todayNum: 50
+					},
+					{
+						titlePic: require("../../static/demo/topicpic/12.jpeg"),
+						title: '我是标题22',
+						desc: '我是描述22',
+						totalNum: 100,
+						todayNum: 50
+					},
+					{
+						titlePic: require("../../static/demo/topicpic/11.jpeg"),
+						title: '我是标题33',
+						desc: '我是描述22',
+						totalNum: 100,
+						todayNum: 50
+					},
+					{
+						titlePic: require("../../static/demo/topicpic/10.jpeg"),
+						title: '我是标题4444',
+						desc: '我是描述22',
+						totalNum: 100,
+						todayNum: 50
+					}
+				]
 			};
 		},
 		methods:{
@@ -260,6 +298,12 @@
 			margin-right 20upx
 			border-radius 8upx
 		}
+	}
+}
+.topic-lastest-container{
+	padding 20upx
+	padding-bottom 50upx
+	.topic-lastest-title{
 	}
 }
 // 这里不加deep 就会出现滚动条，为何？？？
