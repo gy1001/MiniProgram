@@ -6,8 +6,8 @@
 		</view>
 		<!-- 中间 -->
 		<view class="nav-middle u-flex u-acenter u-jcenter">
-			<block v-for="item in tabList" :key="item.id">
-				<view @click="toggleTab(item)" class="nav-item" :class="{active: currentTab == item.id}">{{item.name}}</view>
+			<block v-for="(item, itemIndex) in tabList" :key="item.id">
+				<view @click="toggleTab(itemIndex)" class="nav-item" :class="{active: currentTab == item.id}">{{item.name}}</view>
 			</block>
 		</view>
 		<!-- 右边 -->
@@ -48,8 +48,8 @@
 			clickRight(){
 				this.$emit("clickRight")
 			},
-			toggleTab(item){
-				this.$emit("toggleTab", item)
+			toggleTab(itemIndex){
+				this.$emit("toggleTab", itemIndex)
 			}
 		}
 	}

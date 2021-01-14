@@ -2,9 +2,20 @@
 	<view>
 		<news-nav-bar @clickLeft="clickLeft" @clickRight="clickRight" :tabList="tabList" :currentTab="currentTab" @toggleTab="toggleTab"></news-nav-bar>
 		<!-- 列表 -->
-		<block v-for="(item, itemIndex) in contentList" :key="itemIndex">
-			<news-list @follow="follow(itemIndex)" @praise="praise($event, itemIndex)" :itemInfo="item"></news-list>
-		</block>
+		<swiper @change="swiperChange" :style="{height: contentHeight + 'px' }" :current="swiperIndex">
+			<swiper-item>
+				<scroll-view class="list-scroll-view list" :scroll-y="true" :style="{height: contentHeight + 'px' }">
+					<block v-for="(item, itemIndex) in contentList" :key="itemIndex">
+						<news-list @follow="follow(itemIndex)" @praise="praise($event, itemIndex)" :itemInfo="item"></news-list>
+					</block>
+				</scroll-view>
+			</swiper-item>
+			<swiper-item>
+				<scroll-view class="list-scroll-view list" :scroll-y="true" :style="{height: contentHeight + 'px' }">
+					话题
+				</scroll-view>
+			</swiper-item>
+		</swiper>
 	</view>
 </template>
 
@@ -16,9 +27,19 @@
 			'news-nav-bar': NewsNavBar,
 			'news-list': NewsList
 		},
+		onLoad() {
+			uni.getSystemInfo({
+				success: (res) => {
+					let height = res.windowHeight - uni.upx2px(100) // 导航条是100upx
+					this.contentHeight = height
+				}
+			})
+		},
 		data() {
 			return {
+				contentHeight: 500,
 				currentTab: "1",
+				swiperIndex: 0,
 				tabList: [
 					{ name: '关注', id: '1' },
 					{ name: '话题', id: '2' },
@@ -78,8 +99,9 @@
 			};
 		},
 		methods:{
-			toggleTab(item){
-				this.currentTab = item.id
+			toggleTab(itemIndex){
+				this.swiperIndex = Number(itemIndex)
+				this.currentTab = this.tabList[itemIndex].id
 			},
 			clickLeft(){
 				
@@ -105,10 +127,17 @@
 				}
 				this.contentList[index].isPraise = true
 				this.contentList[index].praiseNum++
+			},
+			swiperChange(e){
+				this.swiperIndex = e.detail.current
+				this.currentTab = this.tabList[this.swiperIndex].id
 			}
 		}
 	}
 </script>
 
 <style lang="stylus">
+.list-scroll-view{
+	position relative
+}
 </style>
