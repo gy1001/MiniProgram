@@ -6,11 +6,8 @@
 		<view class="common-list-right">
 			<view class="u-flex u-jbetween">
 				<view class="info-box u-flex u-acenter">
-					{{itemInfo.username}}
-					<view 
-						class="gender-box icon iconfont" 
-						:class="{'icon-nan': itemInfo.gender == 0, 'icon-nv': itemInfo.gender == 1}"
-					>{{itemInfo.age}}</view>
+					<view class="info-name">{{itemInfo.username}}</view> 
+					<gender-age-tag :age="itemInfo.age" :gender="itemInfo.gender"></gender-age-tag>
 				</view>
 				<view v-if="itemInfo.isGuanzhu" class="guanzhu-btn u-flex u-acenter">已关注</view>
 				<view @click="follow" v-else class="guanzhu-btn u-flex u-acenter icon iconfont icon-zengjia">关注</view>
@@ -46,7 +43,11 @@
 </template>
 
 <script>
+	import GenderAgeTag from '../../components/gender-age-tag/gender-age-tag.vue'
 	export default {
+		components: {
+			'gender-age-tag': GenderAgeTag
+		},
 		data() {
 			return {
 				
@@ -70,7 +71,6 @@
 </script>
 
 <style lang="stylus" scoped>
-
 .common-list{
 	padding 20upx
 	box-sizing border-box
@@ -93,17 +93,8 @@
 		.info-box{
 			color #999999
 			font-size 30upx
-			.gender-box{
-				background-color #007AFF
-				color #FFFFFF
-				font-size 23upx
-				padding 5upx 10upx
-				margin-left 10upx
-				border-radius 20upx
-				line-height 24upx
-				&.icon-nv{
-					background-color pink
-				}
+			.info-name{
+				margin-right 10upx
 			}
 		}
 		.guanzhu-btn{
