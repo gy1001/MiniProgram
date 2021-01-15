@@ -1,5 +1,5 @@
 <template>
-	<view class="paper-list u-flex u-acenter">
+	<view class="paper-list u-flex u-acenter animated fadeInLeft">
 		<image class="paper-user-avatar" :src="paperInfo.userPic" mode="widthFix" lazy-load></image>
 		<view class="paper-list-right">
 			<view class="u-flex u-acenter u-jbetween">
