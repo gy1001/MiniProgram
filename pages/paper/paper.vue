@@ -1,5 +1,7 @@
 <template>
 	<view>
+		<!-- 操作菜单 -->
+		<popup-right-box @toggle="togglePopupVisible" :visible="popupVisible" :list="popupList"></popup-right-box>
 		<!-- 小纸条列表  -->
 		<block v-for="(paperInfo, paperIndex) in paperList" :key="paperIndex">
 			<paper-list :paperInfo="paperInfo"></paper-list>
@@ -11,14 +13,29 @@
 
 <script>
 	import PaperList from '../../components/paper-list/paper-list.vue'
+	import PopupRightBox from '../../components/popup-right-box/popup-right-box.vue'
 	import LoadMore from '../../components/load-more.vue'
 	export default {
 		components: {
 			'paper-list': PaperList,
-			"load-more": LoadMore
+			"load-more": LoadMore,
+			'popup-right-box': PopupRightBox
 		},
 		data() {
 			return {
+				popupList: [
+					{
+						text: '加糗友',
+						handler: this.followFriend,
+						icon: 'icon-sousuo'
+					},
+					{
+						text: '清楚缓存',
+						icon: 'icon-qingchu',
+						handler: this.clearCache
+					}
+				],
+				popupVisible: false,
 				loadText: '上拉加载更多',
 				paperList:[
 					{
@@ -115,9 +132,30 @@
 				this.paperList.push(newObj)
 				this.loadText = "上拉加载更多"
 			}, 1000)
+		},
+		onNavigationBarButtonTap(event) {
+			console.log(event.index)
+			if(event.index === 1){
+				this.togglePopupVisible()
+			}else{
+				this.popupVisible = false
+			}
+		},
+		methods: {
+			followFriend(){
+				this.togglePopupVisible()
+			},
+			clearCache(){
+				console.log("清除缓存")
+				this.togglePopupVisible()
+			},
+			togglePopupVisible(){
+				this.popupVisible = !this.popupVisible
+			}
 		}
 	}
 </script>
 
 <style lang="stylus" scoped>
+
 </style>
