@@ -8,7 +8,7 @@
 				:id="'scroll_tab_' + index"
 				:style="{...scrollItemStyle}"
 			>
-				{{tab.name}}
+				{{tab.name}} <text class="margin-left-10" v-if="tab.number">{{tab.number}}</text>
 			</view>
 		</block>
 	</scroll-view>
@@ -77,5 +77,8 @@
 	width:0;
 	height:0;
 	color:transparent;
+}
+.margin-left-10{
+	margin-left 10upx
 }
 </style>
