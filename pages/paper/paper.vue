@@ -134,11 +134,13 @@
 			}, 1000)
 		},
 		onNavigationBarButtonTap(event) {
-			console.log(event.index)
 			if(event.index === 1){
 				this.togglePopupVisible()
 			}else{
 				this.popupVisible = false
+				uni.navigateTo({
+					url: '/pages/buddy-list/buddy-list'
+				})
 			}
 		},
 		methods: {

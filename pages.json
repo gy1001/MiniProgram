@@ -158,6 +158,38 @@
 					"scrollIndicator": "none" // 隐藏滚动条
 				}
 			}
+		},
+		{
+		"path" : "pages/buddy-list/buddy-list",
+		"style":{
+				"navigationBarTitleText": "好友",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"animationType": "slide-in-left", // 窗口进场动画
+					"scrollIndicator": "none", // 隐藏滚动条
+					"bounce": "none", // 页面反弹效果
+					"titleNView": {
+						"autoBackButton": false,
+						"searchInput": {
+							"align": "center",
+							"backgroundColor": "#F7F7F7",
+							"borderRadius": "4px",
+							"placeholder": "搜索糗事",
+							"placeholderColor": "#CCCCCC",
+							"disabled": false
+						},
+						"buttons": [
+							{
+								"color": "#FF9619",
+								"colorPressed": "#BBBBBB",
+								"float": "right",
+								"fontSize": "16px",
+								"text": "取消"
+							}
+						]
+					}
+				}
+			}
 		}
 	],
 	"globalStyle": {
