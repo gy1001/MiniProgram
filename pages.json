@@ -121,6 +121,7 @@
 			"path" : "pages/topic-detail/topic-detail",
 			"style": {
 				"navigationBarTitleText": "话题详情",
+				"enablePullDownRefresh": true,
 				"app-plus": {
 					"titleNView": {
 						"type": "transparent", // 渐变

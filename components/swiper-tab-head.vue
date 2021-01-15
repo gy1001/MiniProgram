@@ -1,7 +1,13 @@
 <template>
-	<scroll-view :scroll-with-animation="true" :scroll-x="true" class="uni-swiper-tab" :scroll-into-view="'scroll_tab_' + tabIndex">
+	<scroll-view :scroll-with-animation="true" :class="{'no-border': !showBorder}" :scroll-x="true" class="uni-swiper-tab" :scroll-into-view="'scroll_tab_' + tabIndex">
 		<block v-for="(tab, index) in tabBars" :key="tab.id">
-			<view @click="tabTap(index)" class="swiper-tab-list" :class="{active: index == tabIndex}" :id="'scroll_tab_' + index">
+			<view 
+				@click="tabTap(index)" 
+				class="swiper-tab-list" 
+				:class="{active: index == tabIndex}" 
+				:id="'scroll_tab_' + index"
+				:style="{...scrollItemStyle}"
+			>
 				{{tab.name}}
 			</view>
 		</block>
@@ -17,12 +23,20 @@
 		},
 		props: {
 			tabBars: {
-				default: [],
+				default:() => [],
 				type: Array
 			},
 			tabIndex: {
-				default: [Number],
+				default: [Number, String],
 				type: 0
+			},
+			showBorder: {
+				type: Boolean,
+				default: true
+			},
+			scrollItemStyle: {
+				type: Object,
+				default:() => {}
 			}
 		},
 		methods: {
@@ -34,6 +48,11 @@
 </script>
 
 <style lang="stylus" scoped>
+.uni-swiper-tab{
+	&.no-border{
+		border-bottom none	
+	}
+}
 .swiper-tab-list{
 	color #969696
 	font-weight bold
