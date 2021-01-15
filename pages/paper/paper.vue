@@ -39,6 +39,11 @@
 					}
 				]
 			};
+		},
+		onPullDownRefresh() {
+			setTimeout(() => {
+				uni.stopPullDownRefresh()
+			}, 1000)
 		}
 	}
 </script>
