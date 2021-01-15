@@ -22,18 +22,19 @@
 						"buttons": [
 							// 左边的
 							{
-								"color": "#FF9619",
-								"float": "left",
-								"fontSize": "20px",
-								"fontSrc": "/static/font/iconfont.tff",
-								"text": "\ue609"
+							 "color":"#FF9619",
+							 "colorPressed":"#BBBBBB",
+							 "float":"left",
+							 "fontSize":"22px",
+							 "fontSrc":"/static/font/iconfont.ttf",
+							 "text":"\ue609"
 							},
 							// 右边
 							{
 								"color": "#000000",
 								"float": "right",
-								"fontSize": "20px",
-								"fontSrc": "/static/font/iconfont.tff",
+								"fontSize": "22px",
+								"fontSrc": "/static/font/iconfont.ttf",
 								"text": "\ue653"
 							}
 						]
@@ -55,7 +56,29 @@
 			"path" : "pages/paper/paper",
 			"style": {
 				"navigationBarTitleText": "小纸条",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+							// 左边的
+							{
+								"color": "#000000",
+								"float": "left",
+								"fontSize": "22px",
+								"fontSrc": "/static/font/iconfont.ttf",
+								"text": "\ue845"
+							},
+							// 右边
+							{
+								"color": "#000000",
+								"float": "right",
+								"fontSize": "22px",
+								"fontSrc": "/static/font/iconfont.ttf",
+								"text": "\ue684"
+							}
+						]
+					}
+				}
 			}    
 		},
 		{

@@ -58,9 +58,9 @@
 <style lang="stylus">
 .nav-left{
 	text-align center
-	padding-left 30upx
+	padding-left 10upx
 	.icon-qiandao{
-		font-size 50upx
+		font-size 22px
 		color #FF9619
 	}
 }
@@ -89,9 +89,10 @@
 	}
 }
 .nav-right{ 
-	text-align center
+	text-align right
+	width 100%
 	.icon-bianji{
-		font-size 50upx
+		font-size 22px
 	}
 }
 </style>
