@@ -4,7 +4,7 @@
 		<popup-right-box @toggle="togglePopupVisible" :visible="popupVisible" :list="popupList"></popup-right-box>
 		<!-- 小纸条列表  -->
 		<block v-for="(paperInfo, paperIndex) in paperList" :key="paperIndex">
-			<paper-list :paperInfo="paperInfo"></paper-list>
+			<paper-list @click="toChatDetail" :paperInfo="paperInfo"></paper-list>
 		</block>
 		<!-- 上拉加载 -->
 		<load-more :loadText="loadText"></load-more>
@@ -153,6 +153,11 @@
 			},
 			togglePopupVisible(){
 				this.popupVisible = !this.popupVisible
+			},
+			toChatDetail(){
+				uni.navigateTo({
+					url: '/pages/user-chat/user-chat'
+				})
 			}
 		}
 	}

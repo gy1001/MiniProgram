@@ -1,5 +1,5 @@
 <template>
-	<view class="paper-list u-flex u-acenter animated fadeInLeft">
+	<view class="paper-list u-flex u-acenter animated fadeInLeft" @click="chatDetail">
 		<image class="paper-user-avatar" :src="paperInfo.userPic" mode="widthFix" lazy-load></image>
 		<view class="paper-list-right">
 			<view class="u-flex u-acenter u-jbetween">
@@ -31,6 +31,11 @@
 			paperInfo: {
 				type: Object,
 				default: () => {}
+			}
+		},
+		methods: {
+			chatDetail(){
+				this.$emit("click", this.paperInfo)
 			}
 		}
 	}
