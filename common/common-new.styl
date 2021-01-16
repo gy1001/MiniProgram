@@ -1,0 +1,91 @@
+
+.common-list{
+	padding 20upx
+	box-sizing border-box
+	.common--list-left{
+		.common-list-avatar{
+			width 90upx
+			height 90upx
+			border-radius 100%
+		}
+	}
+	.common-list-right{
+		flex 2
+		margin-left 20upx
+		border-bottom solid 1px #EEEEEE
+		padding-bottom 10upx
+		image{
+			width 100%
+			border-radius 10upx
+		}
+		.info-box{
+			color #999999
+			font-size 30upx
+			.info-name{
+				margin-right 10upx
+			}
+		}
+		.guanzhu-btn{
+			background-color #EEEEEE
+			padding 0 10upx
+			font-size 26upx
+			border-radius 10upx
+			vertical-align bottom
+		}
+		.common-list-title{
+			font-size 32upx
+			padding 12upx 0
+		}
+		.video-img-box{
+			position relative
+			.list-video-play{
+				position absolute
+				font-size 140upx
+				color #FFFFFF 
+			}
+			.list-video-info{
+				position absolute
+				background-color rgba(51,51,51,0.72)
+				color #FFFFFF
+				bottom 8upx
+				right 8upx
+				border-radius 40upx
+				padding 0 20upx
+				font-size 25upx
+			}
+		}
+		.common-list-share{
+			width 100%
+			padding 10upx
+			background-color #EEEEEE
+			border-radius 10upx
+			box-sizing border-box
+			.list-share-img{
+				width 200upx
+				height 150upx
+				margin-right 10upx
+			}
+		}
+		.list-bottom{
+			color #AAAAAA
+			margin-top 10upx
+			.list-bottom-left{
+				
+			}
+			.list-bottom-right{
+				view.icon{
+					margin-left 16upx
+					font-size 28upx
+					&::before{
+						padding-right 4upx
+					}
+				}
+				.icon-dianzan{
+					&.active{
+						color #4CD964
+					}
+				}
+			}
+		}
+	}
+}
