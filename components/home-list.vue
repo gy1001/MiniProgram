@@ -1,5 +1,5 @@
 <template>
-	<view class="index-list animated fadeInRight">
+	<view class="index-list animated fadeInLeft">
 		<view class="index-list1 u-flex u-acenter u-jbetween">
 			<view class="u-flex u-acenter">
 				<image :src="item.userpic" mode="widthFix" lazy-load></image>{{item.username}}
