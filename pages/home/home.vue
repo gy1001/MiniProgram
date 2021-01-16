@@ -295,6 +295,9 @@
 			// 进入详情页
 			toDetail(index, swiperIndex){
 				console.log("进入详情页", index, swiperIndex)
+				uni.navigateTo({
+					url: '/pages/detail/detail'
+				})
 			},
 			// 上拉加载更多
 			loadMore(index){
