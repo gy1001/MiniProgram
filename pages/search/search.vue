@@ -26,7 +26,8 @@
 			return {
 				loadText: '上拉加载更多',
 				searchList: [],
-				isSearched: false
+				isSearched: false,
+				searchText: ''
 			};
 		},
 		// 监听原生标题栏按钮点击事件，参数为Object
@@ -41,11 +42,13 @@
 		},
 		// 监听原生标题栏搜索输入框搜索事件，用户点击软键盘上的“搜索”按钮时触发
 		onNavigationBarSearchInputConfirmed(event){
-			this.searchGetData(event.text)
+			this.searchText = event.text
+			this.getSearchData()
 		},
 		onPullDownRefresh() {
 			setTimeout(() => {
 				uni.stopPullDownRefresh()
+				this.getSearchData()
 			}, 1000)
 		},
 		// 监听页面触底事件
@@ -79,7 +82,7 @@
 			toDetail(){
 				
 			},
-			searchGetData(searchKey){
+			getSearchData(){
 				uni.showLoading({
 					title: '请稍候'
 				})
