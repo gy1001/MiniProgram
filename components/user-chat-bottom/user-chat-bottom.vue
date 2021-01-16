@@ -1,7 +1,7 @@
 <template>
 	<view class="user-chat-bottom u-flex u-acenter">
-		<input class="user-chat-input" type="text" v-model="chatText" placeholder="文明发言" />
-		<view class="icon iconfont icon-fabu" @click="submitChat"></view>
+		<input class="user-chat-input" type="text" @confirm="submitChat" v-model="chatText" placeholder="文明发言" />
+		<!-- <view class="icon iconfont icon-fabu" @click="submitChat"></view> -->
 	</view>
 </template>
 

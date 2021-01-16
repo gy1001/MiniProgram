@@ -197,6 +197,7 @@
 				"navigationBarTitleText": "聊天",
 				"enablePullDownRefresh": false,
 				"app-plus": {
+					"softinputNavBar": "none", // 默认在ios软键盘上方有一个横条，显示着：上一项、下一项和完成等按钮。如不想显示这个横条
 					"scrollIndicator": "none", // 隐藏滚动条
 					"bounce": "none", // 页面反弹效果
 					"titleNView": {

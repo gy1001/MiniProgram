@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="user-chat-item">
 		<view v-if="chatItem.formatTime" class="user-chat-time u-flex u-jcenter">{{chatItem.formatTime}}</view>
 		<view class="user-chat-list u-flex" :class="{'user-chat-me': chatItem.isMe}">
 			<image class="user-chat-avatar" :src="chatItem.userPic" mode="widthFix" lazy-load></image>

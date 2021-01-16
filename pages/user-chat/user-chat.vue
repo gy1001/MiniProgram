@@ -1,9 +1,13 @@
 <template>
-	<view>
-		<!-- 聊天列表 -->
-		<block v-for="(chatItem,chatIndex) in chatList" :key="chatIndex">
-			<user-chat-list :chatItem="chatItem"></user-chat-list>
-		</block>
+	<view class="user-chat-container">
+		<scroll-view scroll-y="true" id="chat-scroll" :scroll-top="scrollTop" :scroll-with-animation="true" :style="{ height: contentHeight +'px'}">
+			<view class="chat-list-container">
+				<!-- 聊天列表 -->
+				<block v-for="(chatItem,chatIndex) in chatList" :key="chatIndex">
+					<user-chat-list :chatItem="chatItem"></user-chat-list>
+				</block>
+			</view>
+		</scroll-view>
 		<!-- 输入框 -->
 		<user-chat-bottom @submit="submitChat"></user-chat-bottom>
 	</view>
@@ -20,12 +24,25 @@
 		},
 		data() {
 			return {
-				chatList: []
+				chatList: [],
+				scrollTop: 0,
+				contentHeight: 500
 			};
 		},
 		methods: {
 			submitChat(text){
-				console.log(text)
+				if(text){
+					const newObj = {
+						userPic: require('../../static/demo/userpic/11.jpg'),
+						isMe: true,
+						type: 'text', //text img video 等 
+						content: text, 
+						time: new Date().getTime(),
+						formatTime: time.getChatTime(new Date().getTime(), this.chatList[this.chatList.length-1].time)
+					}
+					this.chatList.push(newObj)		
+					this.scrollToChatBottom()
+				}
 			},
 			// 获取聊天数据
 			getData(){
@@ -84,13 +101,40 @@
 					arr[chatIndex].formatTime = time.getChatTime(arr[chatIndex].time, chatIndex === 0 ? 0 : arr[chatIndex-1].time)
 				})
 				this.chatList = arr
+			},
+			scrollToChatBottom(){
+				this.$nextTick(() => {
+					const selector = uni.createSelectorQuery()
+					selector.select('#chat-scroll').boundingClientRect()
+					selector.select('.chat-list-container').boundingClientRect()
+					selector.exec((res) => {
+						const scrollViewHeight = res[0].height
+						const innerListHeight = res[1].height
+						console.log(innerListHeight, scrollViewHeight)
+						if(innerListHeight > scrollViewHeight){
+							 this.scrollTop = innerListHeight
+						}
+					})
+				})
 			}
 		},
 		onLoad(){
+			uni.getSystemInfo({
+				success: (res) => {
+					let height = res.windowHeight - uni.upx2px(110) // 底部输入框是110
+					this.contentHeight = height
+				}
+			})
 			this.getData()
+		},
+		mounted() {
+			this.scrollToChatBottom()
 		}
 	}
 </script>
 
 <style lang="stylus" scoped>
+.user-chat-container{
+	padding 0 20upx 
+}
 </style>
