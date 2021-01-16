@@ -1,14 +1,28 @@
 <template>
 	<view>
 		<detail-info :itemInfo="itemInfo"></detail-info>
+		<view class="comment-title">最新评论 {{commentInfo.totalCount}}</view>
+		<view class="comment-container">
+			<block v-for="(commentItem, commentIndex) in commentInfo.list" :key="commentIndex">
+				<comment-list :commentInfo="commentItem"></comment-list>
+				<view class="comment-replay-container" v-if="commentItem.replyList.length > 0">
+					<block v-for="(replyItem, replyIndex) in commentItem.replyList" :key="replyIndex">
+						<comment-list :commentInfo="replyItem"></comment-list>
+					</block>
+				</view>
+			</block>
+		</view>
 	</view>
 </template>
 
 <script>
 	import DetailInfo from '../../components/detail-info/detail-info.vue'
+	import CommentList from '../../components/comment-list/comment-list.vue'
+	import {time} from '../../common/util.js'
 	export default {
 		components: {
-			"detail-info": DetailInfo
+			"detail-info": DetailInfo,
+			"comment-list": CommentList
 		},
 		data() {
 			return {
@@ -27,6 +41,10 @@
 					commentNum: 20,
 					isPraise: false,
 					praiseNum: 20
+				},
+				commentInfo: {
+					totalCount: 0,
+					list: []
 				}
 			};
 		},
@@ -36,10 +54,79 @@
 			if(event.index === 0){
 				console.log("顶部点击分享")
 			}
+		},
+		onLoad() {
+			this.getCommentData()
+		},
+		methods: {
+			getCommentData(){
+				const newArr = [
+					{
+						titlePic: require('../../static/demo/userpic/1.jpg'),
+						username:'昵称',
+						time: '1610788933',
+						content: '评论内容',
+						replyList: [
+							{
+								titlePic: require('../../static/demo/userpic/2.jpg'),
+								username:'昵称',
+								time: '301610789933',
+								content: '回复内容'
+							}
+						]
+					},
+					{
+						titlePic: require('../../static/demo/userpic/3.jpg'),
+						username:'昵称',
+						time: '1610788933',
+						content: '评论内容',
+						replyList: []
+					},
+					{
+						titlePic: require('../../static/demo/userpic/4.jpg'),
+						username:'我是昵称',
+						time: '1610813269',
+						content: '评论内容',
+						replyList: [
+							{
+								titlePic: require('../../static/demo/userpic/5.jpg'),
+								username:'昵称',
+								time: '1610814269',
+								content: '回复内容'
+							}
+						]
+					}
+				]
+				newArr.forEach((commentItem, commentIndex) => {
+					newArr[commentIndex].formatTime = time.getTime(commentItem.time)
+				})
+				this.commentInfo = {
+					totalCount: newArr.length,
+					list: newArr
+				}
+			}
 		}
 	}
 </script>
 
-<style lang="stylus">
-
+<style lang="stylus" scoped>
+.comment-title{
+	padding 20upx
+	padding-bottom 0
+	font-weight bold
+	font-size 30upx
+}
+.comment-container{
+	padding 0 20upx
+	padding-bottom 30upx
+	box-sizing border-box
+	.comment-replay-container{
+		padding 20upx
+		box-sizing border-box
+		background-color #f4f4f4
+		border-bottom 1upx solid #F4F4F4
+		margin-left 70upx
+		border-radius 8upx
+	}
+}
 </style>
