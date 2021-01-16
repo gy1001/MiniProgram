@@ -190,6 +190,29 @@
 					}
 				}
 			}
+		},
+		{
+			"path" : "pages/user-chat/user-chat",
+			"style": {
+				"navigationBarTitleText": "聊天",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"scrollIndicator": "none", // 隐藏滚动条
+					"bounce": "none", // 页面反弹效果
+					"titleNView": {
+						"autoBackButton": false,
+						"buttons": [
+							{
+								"color": "#000000",
+								"float": "right",
+								"fontSize": "22px",
+								"fontSrc": "/static/font/iconfont.ttf",
+								"text": "\ue628"
+							}
+						]
+					}
+				}
+			}
 		}
 	],
 	"globalStyle": {

@@ -1,5 +1,5 @@
 <template>
-	<view class="buddy-list u-flex u-acenter animated fadeInLeft">
+	<view class="buddy-list u-flex u-acenter animated fadeInLeft" @click="toDetail">
 		<image :src="userItem.userPic" mode="widthFix" lazy-load></image>
 		<view class="user-info-box">
 			<view class="user-name">{{userItem.username}}</view>
@@ -24,6 +24,11 @@
 			userItem: {
 				type: Object,
 				default: () => {}
+			}
+		},
+		methods: {
+			toDetail(){
+				this.$emit("click", this.userItem)
 			}
 		}
 	}

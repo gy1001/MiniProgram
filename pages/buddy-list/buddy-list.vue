@@ -10,7 +10,7 @@
 						<template v-else>
 							<!-- 好友列表 -->
 							<block v-for="(userItem, userIndex) in swiperItem.list" :key="userIndex">
-								<buddy-list :userItem="userItem"></buddy-list>
+								<buddy-list @click="toChatPage" :userItem="userItem"></buddy-list>
 							</block>
 							<!-- 上拉加载更多 -->
 							<load-more :loadText="swiperItem.loadText"></load-more> 
@@ -151,6 +151,11 @@
 					this.buddyList[index].list.push(obj)
 					this.buddyList[index].loadText = "上拉加载更多"
 				}, 1000);
+			},
+			toChatPage(){
+				uni.navigateTo({
+					url: "/pages/user-chat/user-chat"
+				})
 			}
 		},
 		onNavigationBarButtonTap(event) {
