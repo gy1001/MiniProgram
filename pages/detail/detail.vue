@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="comment-detail-container">
 		<detail-info :itemInfo="itemInfo"></detail-info>
 		<view class="comment-title">最新评论 {{commentInfo.totalCount}}</view>
 		<view class="comment-container">
@@ -11,18 +11,21 @@
 					</block>
 				</view>
 			</block>
-		</view>
+		</view> 
+		<user-chat-bottom @submit="commentSubmit"></user-chat-bottom>
 	</view>
 </template>
 
 <script>
 	import DetailInfo from '../../components/detail-info/detail-info.vue'
 	import CommentList from '../../components/comment-list/comment-list.vue'
+	import UserChatBottom from '../../components/user-chat-bottom/user-chat-bottom.vue'
 	import {time} from '../../common/util.js'
 	export default {
 		components: {
 			"detail-info": DetailInfo,
-			"comment-list": CommentList
+			"comment-list": CommentList,
+			"user-chat-bottom": UserChatBottom
 		},
 		data() {
 			return {
@@ -104,29 +107,42 @@
 					totalCount: newArr.length,
 					list: newArr
 				}
+			},
+			commentSubmit(text){
+				const newTextCommentInfo = {
+					titlePic: require('../../static/demo/userpic/1.jpg'),
+					username: '我是昵称',
+					time:  time.getTime(new Date().getTime()),
+					content: text,
+					replyList: []
+				}
+				this.commentInfo.list.push(newTextCommentInfo)
 			}
 		}
 	}
 </script>
 
 <style lang="stylus" scoped>
-.comment-title{
-	padding 20upx
-	padding-bottom 0
-	font-weight bold
-	font-size 30upx
-}
-.comment-container{
-	padding 0 20upx
-	padding-bottom 30upx
-	box-sizing border-box
-	.comment-replay-container{
+.comment-detail-container{
+	padding-bottom 120upx
+	.comment-title{
 		padding 20upx
+		padding-bottom 0
+		font-weight bold
+		font-size 30upx
+	}
+	.comment-container{
+		padding 0 20upx
+		padding-bottom 30upx
 		box-sizing border-box
-		background-color #f4f4f4
-		border-bottom 1upx solid #F4F4F4
-		margin-left 70upx
-		border-radius 8upx
+		.comment-replay-container{
+			padding 20upx
+			box-sizing border-box
+			background-color #f4f4f4
+			border-bottom 1upx solid #F4F4F4
+			margin-left 70upx
+			border-radius 15upx
+		}
 	}
 }
 </style>

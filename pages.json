@@ -222,6 +222,7 @@
 				"enablePullDownRefresh": false,
 				"app-plus": {
 					"scrollIndicator":"none",
+					"softinputNavBar": "none",
 					"titleNView": {
 						"buttons": [
 							{

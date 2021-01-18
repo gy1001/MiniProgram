@@ -9,7 +9,9 @@
 			<view class="uni-comment-content">{{commentInfo.content}}</view>
 			<view class="uni-comment-date">
 				<view>{{commentInfo.formatTime}}</view>
-				<view class="uni-comment-replay-btn">5回复</view>
+				<view class="uni-comment-replay-btn">
+					<template v-if="commentInfo.replyList && commentInfo.replyList.length > 0">{{commentInfo.replyList.length}}</template> 回复
+				</view>
 			</view>
 		</view>
 	</view>
@@ -24,7 +26,7 @@
 		props: {
 			commentInfo: {
 				type: Object,
-				default: ()=>{}
+				default: () => {}
 			}
 		}
 	}
