@@ -24,11 +24,25 @@
 				if(this.btnDisabled || this.requestLoading){
 					return
 				}
-				this.requestLoading = true
-				setTimeout(() => {
-					this.requestLoading = false
-				},1000)
 				console.log("点击提交了")
+				if(this.viladateEmail()){
+					this.requestLoading = true
+					setTimeout(() => {
+						this.requestLoading = false
+					},1000)
+				}
+			},
+			// 验证邮箱是否合法
+			viladateEmail(){
+				const emailPattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+				if(!emailPattern.test(this.email)){
+					uni.showToast({
+						title: "邮箱格式不正确",
+						icon: "none"
+					})
+					return false
+				}
+				return true
 			}
 		}
 	}
