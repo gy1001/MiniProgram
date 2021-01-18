@@ -269,6 +269,14 @@
 				"enablePullDownRefresh": false,
 				"softinputNavBar": "none"
 			}
+		},
+		{
+			"path" : "pages/update-info/update-info",
+			"style": {
+				"navigationBarTitleText": "编辑资料",
+				"enablePullDownRefresh": false,
+				"softinputNavBar": "none"
+			}
 		}
 	],
 	"globalStyle": {

@@ -18,7 +18,7 @@
 				list: [
 					{ text: '账号与安全', handler: this.updatePassword },
 					{ text: '绑定邮箱', handler: this.bindEmail },
-					{ text: '资料编辑' },
+					{ text: '资料编辑', handler: this.editInfo },
 					{ text: '小纸条' },
 					{ text: '清除缓存' },
 					{ text: '意见反馈' },
@@ -35,6 +35,11 @@
 			bindEmail(){
 				uni.navigateTo({
 					url: '/pages/bind-email/bind-email'
+				})
+			},
+			editInfo(){
+				uni.navigateTo({
+					url: '/pages/update-info/update-info'
 				})
 			}
 		}
