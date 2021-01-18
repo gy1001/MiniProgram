@@ -47,42 +47,44 @@
 		<image class="home-adver" src="../../static/demo/demo20.jpg" mode="widthFix" lazy-load></image>
 		<!-- 功能列表 -->
 		<view class="seting-list">
-			<view class="u-flex u-jbetween u-acenter seting-item" hover-class="list-item-hover">
-				<view class="u-flex u-acenter">
-					<view class="icon iconfont icon-liulan"></view>
-					浏览历史
-				</view>
-				<view class="icon iconfont icon-jinru"></view>
-			</view>
-			<view class="u-flex u-jbetween u-acenter seting-item" hover-class="list-item-hover">
-				<view class="u-flex u-acenter">
-					<view class="icon iconfont icon-huiyuanvip"></view>
-					糗百认证
-				</view>
-				<view class="icon iconfont icon-jinru"></view>
-			</view>
-			<view class="u-flex u-jbetween u-acenter seting-item" hover-class="list-item-hover">
-				<view class="u-flex u-acenter">
-					<view class="icon iconfont icon-yiwen"></view>
-					审核糗百
-				</view>
-				<view class="icon iconfont icon-jinru"></view>
-			</view>
+			<block v-for="(item, itemIndex) in list" :key="itemIndex">
+				<left-right :itemInfo="item"></left-right>
+			</block> 
 		</view>
 	</view>
 </template>
 
 <script>
+	import LeftRight from '../../components/left-right/left-right.vue'
 	export default {
+		components: {
+			'left-right': LeftRight
+		},
 		data() {
 			return {
-				list: [],
+				list: [
+					{
+						text: '浏览历史',
+						icon: 'liulan'
+					},
+					{
+						text: '糗百认证',
+						icon: 'huiyuanvip'
+					},
+					{
+						text: '审核糗百',
+						icon: 'yiwen'
+					}
+				],
 				loginStatus: false
 			};
 		},
 		onNavigationBarButtonTap(event) {
 			if(Number(event.index) === 0){
 				console.log("点击了右上角")
+				uni.navigateTo({
+					url: '/pages/setting/setting'
+				})
 			}
 		}
 	}
@@ -149,30 +151,6 @@
 	.home-adver{
 		width 100%
 		border-radius 20upx
-	}
-	.seting-list{
-		.list-item-hover{
-			background-color #EEEEEE
-		}
-		.seting-item{
-			border-bottom solid 1upx #CCCCCC
-			padding 20upx 0
-			.icon{
-				color #BBBBBB
-				&.icon-liulan{
-					color lightblue
-					padding-right 10upx
-				}
-				&.icon-huiyuanvip{
-					color #FFB400
-					padding-right 10upx
-				}
-				&.icon-yiwen{
-					color lightblue
-					padding-right 10upx
-				}
-			}
-		}
 	}
 }
 </style>
