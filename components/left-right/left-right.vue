@@ -1,5 +1,5 @@
 <template>
-	<view class="u-flex u-jbetween u-acenter seting-item" hover-class="list-item-hover">
+	<view class="u-flex u-jbetween u-acenter seting-item" hover-class="list-item-hover" @click="itemTap"> 
 		<view class="u-flex u-acenter">
 			<view v-if="itemInfo.icon" class="icon iconfont left-icon" :class="['icon-' + itemInfo.icon]"></view>
 			{{itemInfo.text}}
@@ -18,6 +18,12 @@
 			itemInfo:{
 				type: Object,
 				default: () => {}
+			}
+		},
+		methods: {
+			itemTap(){
+				console.log(this.itemInfo)
+				this.itemInfo.handler && this.itemInfo.handler()
 			}
 		}
 	}

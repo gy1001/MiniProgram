@@ -16,7 +16,7 @@
 		data() {
 			return {
 				list: [
-					{ text: '账号与安全' },
+					{ text: '账号与安全',handler: this.updatePassword },
 					{ text: '绑定邮箱' },
 					{ text: '资料编辑' },
 					{ text: '小纸条' },
@@ -25,6 +25,13 @@
 					{ text: '关于糗百' }
 				]
 			};
+		},
+		methods: {
+			updatePassword(){
+				uni.navigateTo({
+					url: '/pages/update-password/update-password'
+				})
+			}
 		}
 	}
 </script>

@@ -250,6 +250,16 @@
 				"navigationBarTitleText": "设置",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path" : "pages/update-password/update-password",
+			"style": {
+				"navigationBarTitleText": "修改密码",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
 		}
 	],
 	"globalStyle": {
