@@ -16,8 +16,8 @@
 		data() {
 			return {
 				list: [
-					{ text: '账号与安全',handler: this.updatePassword },
-					{ text: '绑定邮箱' },
+					{ text: '账号与安全', handler: this.updatePassword },
+					{ text: '绑定邮箱', handler: this.bindEmail },
 					{ text: '资料编辑' },
 					{ text: '小纸条' },
 					{ text: '清除缓存' },
@@ -30,6 +30,11 @@
 			updatePassword(){
 				uni.navigateTo({
 					url: '/pages/update-password/update-password'
+				})
+			},
+			bindEmail(){
+				uni.navigateTo({
+					url: '/pages/bind-email/bind-email'
 				})
 			}
 		}

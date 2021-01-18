@@ -261,6 +261,14 @@
 					"softinputNavBar": "none"
 				}
 			}
+		},
+		{
+			"path" : "pages/bind-email/bind-email",
+			"style": {
+				"navigationBarTitleText": "绑定邮箱",
+				"enablePullDownRefresh": false,
+				"softinputNavBar": "none"
+			}
 		}
 	],
 	"globalStyle": {

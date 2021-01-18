@@ -22,7 +22,6 @@
 		},
 		methods: {
 			itemTap(){
-				console.log(this.itemInfo)
 				this.itemInfo.handler && this.itemInfo.handler()
 			}
 		}
