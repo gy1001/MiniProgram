@@ -1,19 +1,44 @@
 <template>
-	<view>
-		
+	<view class="setting-container">
+		<block v-for="(item, itemIndex) in list" :key="itemIndex">
+			<left-right :itemInfo="item"></left-right>
+		</block>
+		<button type="primary" class="set-btn">退出登录</button>
 	</view>
 </template>
 
 <script>
+	import LeftRight from '../../components/left-right/left-right.vue'
 	export default {
+		components: {
+			'left-right': LeftRight
+		},
 		data() {
 			return {
-				
+				list: [
+					{ text: '账号与安全' },
+					{ text: '绑定邮箱' },
+					{ text: '资料编辑' },
+					{ text: '小纸条' },
+					{ text: '清除缓存' },
+					{ text: '意见反馈' },
+					{ text: '关于糗百' }
+				]
 			};
 		}
 	}
 </script>
 
-<style lang="stylus">
-
+<style lang="stylus" scoped>
+.setting-container{
+	padding 20upx
+}
+.set-btn{
+	width 100%
+	margin 40upx 0 20upx 0
+	background-color #FFE933
+	color #333333
+	border 0
+	outline none
+}
 </style>

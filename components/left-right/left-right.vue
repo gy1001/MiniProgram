@@ -1,7 +1,7 @@
 <template>
 	<view class="u-flex u-jbetween u-acenter seting-item" hover-class="list-item-hover">
 		<view class="u-flex u-acenter">
-			<view class="icon iconfont left-icon" :class="['icon-' + itemInfo.icon]"></view>
+			<view v-if="itemInfo.icon" class="icon iconfont left-icon" :class="['icon-' + itemInfo.icon]"></view>
 			{{itemInfo.text}}
 		</view>
 		<view class="icon iconfont icon-jinru"></view>
