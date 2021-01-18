@@ -3,14 +3,14 @@
 		<view class="userinfo-list u-flex u-acenter u-jbetween">
 			<view class="userinfo-title">头像</view>
 			<view class="u-flex u-acenter">
-				<image class="userinfo-avatar" src="../../static/demo/userpic/10.jpg" mode="widthFix" lazy-load></image>
-				<view class="icon iconfont icon-bianji1"></view>
+				<image class="userinfo-avatar" :src="userAvatar" mode="aspectFill" lazy-load></image>
+				<view class="icon iconfont icon-bianji1" @click="changeAvatar"></view>
 			</view>
 		</view>
 		<view class="userinfo-list u-flex u-acenter u-jbetween">
 			<view class="userinfo-title">昵称</view>
 			<view class="u-flex u-acenter">
-				<view class="">昵称</view>
+				<view class="">{{userName}}</view>
 				<view class="icon iconfont icon-bianji1"></view>
 			</view>
 		</view>
@@ -57,6 +57,9 @@
 	export default {
 		data() {
 			return {
+				userAvatar: require('../../static/demo/userpic/10.jpg'),
+				userName: '用户名',
+				birthDay: '1991-08-22',
 				requestLoading: false,
 				btnDisabled: false
 			};
@@ -64,6 +67,15 @@
 		methods: {
 			submit(){
 				
+			},
+			changeAvatar(){
+				uni.chooseImage({
+					count: 1,
+				 sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
+					success:(res) => {
+						this.userAvatar = res.tempFilePaths[0]
+					}
+				})
 			}
 		}
 	}
