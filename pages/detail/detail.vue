@@ -11,8 +11,10 @@
 					</block>
 				</view>
 			</block>
-		</view> 
+		</view>
 		<user-chat-bottom @submit="commentSubmit"></user-chat-bottom>
+		<!-- 分享框 -->
+		<share-popup @toggleVisible="toggleShareVisible" :visible="shareVisible"></share-popup>
 	</view>
 </template>
 
@@ -21,11 +23,13 @@
 	import CommentList from '../../components/comment-list/comment-list.vue'
 	import UserChatBottom from '../../components/user-chat-bottom/user-chat-bottom.vue'
 	import {time} from '../../common/util.js'
+	import SharePopup from '../../components/share-popup/share-popup.vue'
 	export default {
 		components: {
 			"detail-info": DetailInfo,
 			"comment-list": CommentList,
-			"user-chat-bottom": UserChatBottom
+			"user-chat-bottom": UserChatBottom,
+			'share-popup': SharePopup
 		},
 		data() {
 			return {
@@ -48,7 +52,14 @@
 				commentInfo: {
 					totalCount: 0,
 					list: []
-				}
+				},
+				shareVisible: false,
+				shareList: [
+					{
+						icon: 'icon-weixn',
+						// handler: () =>  this.shareTo
+					}
+				]
 			};
 		},
 		// 监听导航点击
@@ -56,12 +67,16 @@
 			console.log(event.index)
 			if(event.index === 0){
 				console.log("顶部点击分享")
+				this.toggleShareVisible()
 			}
 		},
 		onLoad() {
 			this.getCommentData()
 		},
 		methods: {
+			toggleShareVisible(){
+				this.shareVisible = !this.shareVisible
+			},
 			getCommentData(){
 				const newArr = [
 					{
@@ -145,4 +160,5 @@
 		}
 	}
 }
+
 </style>
