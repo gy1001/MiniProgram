@@ -257,7 +257,8 @@
 				"navigationBarTitleText": "修改密码",
 				"enablePullDownRefresh": false,
 				"app-plus": {
-					"scrollIndicator": "none"
+					"scrollIndicator": "none",
+					"softinputNavBar": "none"
 				}
 			}
 		}
