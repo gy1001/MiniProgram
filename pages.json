@@ -285,7 +285,15 @@
 				"enablePullDownRefresh": false,
 				"softinputNavBar": "none"
 			}
-		}
+		},
+		{
+			"path" : "pages/about/about",
+			"style": {
+				"navigationBarTitleText": "关于我们",
+				"enablePullDownRefresh": false,
+				"softinputNavBar": "none"
+			}
+    }
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

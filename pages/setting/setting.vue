@@ -22,7 +22,7 @@
 					{ text: '小纸条' },
 					{ text: '清除缓存' },
 					{ text: '意见反馈', handler: this.toFeedabckOpinion},
-					{ text: '关于糗百' }
+					{ text: '关于糗百', handler: this.toAboutUs }
 				]
 			};
 		},
@@ -45,6 +45,11 @@
 			toFeedabckOpinion(){
 				uni.navigateTo({
 					url: '/pages/opinion-feedback/opinion-feedback'
+				})
+			},
+			toAboutUs(){
+				uni.navigateTo({
+					url: '/pages/about/about'
 				})
 			}
 		}
