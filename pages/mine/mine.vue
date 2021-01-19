@@ -22,7 +22,7 @@
 				<view class="icon iconfont icon-QQ"></view>
 				<view class="icon iconfont icon-xinlangweibo"></view>
 			</view>
-			<view class="u-flex u-acenter u-jcenter">账号密码登录 <view class="icon iconfont icon-jinru"></view></view>
+			<view @click="toLogin" class="u-flex u-acenter u-jcenter">账号密码登录 <view class="icon iconfont icon-jinru"></view></view>
 		</template>
 		<!-- 数据 -->
 		<view class="user-data-box u-flex u-acenter">
@@ -84,6 +84,13 @@
 				console.log("点击了右上角")
 				uni.navigateTo({
 					url: '/pages/setting/setting'
+				})
+			}
+		},
+		methods: {
+			toLogin(){
+				uni.navigateTo({
+					url: "/pages/login/login"
 				})
 			}
 		}

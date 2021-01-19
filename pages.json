@@ -293,7 +293,19 @@
 				"enablePullDownRefresh": false,
 				"softinputNavBar": "none"
 			}
-    }
+    },
+		{
+			"path" : "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"enablePullDownRefresh": false,
+				"app-plus":{
+					"titleNView": false,
+					"scrollIndicator": "none",
+					"softinputNavBar": "none"
+				}
+			}	
+		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
