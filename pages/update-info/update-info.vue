@@ -10,14 +10,14 @@
 		<view class="userinfo-list u-flex u-acenter u-jbetween">
 			<view class="userinfo-title">昵称</view>
 			<view class="u-flex u-acenter">
-				<view class="">{{userName}}</view>
+				<input type="text" v-model="userName" class="uni-input" disabled @blur="userNameBlur" />
 				<view class="icon iconfont icon-bianji1"></view>
 			</view>
 		</view>
-		<view class="userinfo-list u-flex u-acenter u-jbetween">
+		<view class="userinfo-list u-flex u-acenter u-jbetween" @click="changeActionSheet('gender')">
 			<view class="userinfo-title">性别</view>
 			<view class="u-flex u-acenter">
-				<view class="">男</view>
+				<view class="">{{genderText}}</view>
 				<view class="icon iconfont icon-bianji1"></view>
 			</view>
 		</view>
@@ -28,17 +28,17 @@
 				<view class="icon iconfont icon-bianji1"></view>
 			</view>
 		</view>
-		<view class="userinfo-list u-flex u-acenter u-jbetween">
+		<view class="userinfo-list u-flex u-acenter u-jbetween" @click="changeActionSheet('reltion')">
 			<view class="userinfo-title">情感</view>
 			<view class="u-flex u-acenter">
-				<view class="">未婚</view>
+				<view class="">{{relationText}}</view>
 				<view class="icon iconfont icon-bianji1"></view>
 			</view>
 		</view>
-		<view class="userinfo-list u-flex u-acenter u-jbetween">
+		<view class="userinfo-list u-flex u-acenter u-jbetween" @click="changeActionSheet('profession')">
 			<view class="userinfo-title">职业</view>
 			<view class="u-flex u-acenter">
-				<view class="">IT</view>
+				<view class="">{{professionText}}</view>
 				<view class="icon iconfont icon-bianji1"></view>
 			</view>
 		</view>
@@ -54,6 +54,9 @@
 </template>
 
 <script>
+	const genderList = ["男","女","不限"]
+	const relationList = ["未婚","已婚","其他"]
+	const professionList = ["老师","律师","IT","医生","护士"]
 	export default {
 		data() {
 			return {
@@ -61,11 +64,15 @@
 				userName: '用户名',
 				birthDay: '1991-08-22',
 				requestLoading: false,
-				btnDisabled: false
+				btnDisabled: false,
+				genderText: '男',
+				relationText: "其他",
+				professionText: 'IT'
 			};
 		},
 		methods: {
 			submit(){
+				
 				
 			},
 			changeAvatar(){
@@ -76,6 +83,51 @@
 						this.userAvatar = res.tempFilePaths[0]
 					}
 				})
+			},
+			// 修改用户名失去焦点
+			userNameBlur(){
+				
+			},
+			// 改变性别
+			changeActionSheet(type){
+				let actionList = []
+				switch (type){
+					case "gender":
+						actionList = genderList
+						break;
+					case "relation":
+						actionList = relationList
+						break
+					case "profession":
+						actionList = professionList
+						break
+					default:
+						break;
+				}
+				uni.showActionSheet({
+					itemList: actionList,
+						success: (res) => {
+							this.handleWithActionText(type, res.tapIndex)
+						},
+						fail: (res)	=> {
+							console.log(res.errMsg);
+						}
+				})
+			},
+			handleWithActionText(type, tapIndex){
+				switch (type){
+					case "gender":
+						this.genderText = genderList[tapIndex]
+						break;
+				case "relation":
+						this.relationText = relationList[tapIndex]
+						break
+				case "profession":
+						this.professionText = professionList[tapIndex]
+						break
+					default:
+						break;
+				}
 			}
 		}
 	}
@@ -87,6 +139,10 @@
 	.userinfo-list{
 		padding 20upx 0
 		border-bottom solid 1upx #F4F4F4
+		.uni-input{
+			text-align right
+			padding-right 0
+		}
 		.userinfo-title{
 			font-size 32upx
 			font-weight bold
