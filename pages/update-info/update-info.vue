@@ -24,7 +24,9 @@
 		<view class="userinfo-list u-flex u-acenter u-jbetween">
 			<view class="userinfo-title">生日</view>
 			<view class="u-flex u-acenter">
-				<view class="">2019-03-18</view>
+				<picker mode="date" @change="birthDayChange">
+					{{birthDay}}
+				</picker>
 				<view class="icon iconfont icon-bianji1"></view>
 			</view>
 		</view>
@@ -45,7 +47,10 @@
 		<view class="userinfo-list u-flex u-acenter u-jbetween">
 			<view class="userinfo-title">家乡</view>
 			<view class="u-flex u-acenter">
-				<view class="">河南南阳</view>
+				<!-- <view class="">河南南阳</view> -->
+				<picker mode="multiSelector" :range="cityRangeList" @change="cityPickerChange" @columnchange="cityChange" :value="multiIndex">
+					<view class="uni-input">{{cityRangeList[0][multiIndex[0]]}}，{{cityRangeList[1][multiIndex[1]]}}，{{cityRangeList[2][multiIndex[2]]}}</view>
+				</picker>
 				<view class="icon iconfont icon-bianji1"></view>
 			</view>
 		</view>
@@ -67,7 +72,13 @@
 				btnDisabled: false,
 				genderText: '男',
 				relationText: "其他",
-				professionText: 'IT'
+				professionText: 'IT',
+				cityRangeList: [
+					['亚洲', '欧洲'],
+					['中国', '日本'],
+					['北京', '上海', '广州']
+				],
+				multiIndex: [0, 0, 0]
 			};
 		},
 		methods: {
@@ -85,8 +96,60 @@
 				})
 			},
 			// 修改用户名失去焦点
-			userNameBlur(){
-				
+			userNameBlur(event){
+				console.log(22222)
+			},
+			// 生日更改
+			birthDayChange(event){
+				this.birthDay = event.detail.value
+			},
+			cityChange(e) {
+				console.log('修改的列为：' + e.detail.column + '，值为：' + e.detail.value)
+				this.multiIndex[e.detail.column] = e.detail.value
+				switch (e.detail.column) {
+					case 0: //拖动第1列
+						switch (this.multiIndex[0]) {
+							case 0:
+								this.cityRangeList[1] = ['中国', '日本']
+								this.cityRangeList[2] = ['北京', '上海', '广州']
+								break
+							case 1:
+								this.cityRangeList[1] = ['英国', '法国']
+								this.cityRangeList[2] = ['伦敦', '曼彻斯特']
+								break
+						}
+						this.multiIndex.splice(1, 1, 0)
+						this.multiIndex.splice(2, 1, 0)
+						break
+					case 1: //拖动第2列
+						switch (this.multiIndex[0]) { //判断第一列是什么
+							case 0:
+								switch (this.multiIndex[1]) {
+									case 0:
+										this.cityRangeList[2] = ['北京', '上海', '广州']
+										break
+									case 1:
+										this.cityRangeList[2] = ['东京','北海道']
+										break
+								}
+								break
+							case 1:
+								switch (this.multiIndex[1]) {
+									case 0:
+										this.cityRangeList[2] = ['伦敦', '曼彻斯特']
+										break
+									case 1:
+										this.cityRangeList[2] = ['巴黎', '马赛']
+										break
+								}
+								break
+						}
+						this.multiIndex.splice(2, 1, 0)
+						break
+				}
+			},
+			cityPickerChange(event){
+				this.multiIndex = event.detail.value
 			},
 			// 改变性别
 			changeActionSheet(type){
