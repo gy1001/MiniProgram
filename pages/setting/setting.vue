@@ -21,7 +21,7 @@
 					{ text: '资料编辑', handler: this.editInfo },
 					{ text: '小纸条' },
 					{ text: '清除缓存' },
-					{ text: '意见反馈' },
+					{ text: '意见反馈', handler: this.toFeedabckOpinion},
 					{ text: '关于糗百' }
 				]
 			};
@@ -40,6 +40,11 @@
 			editInfo(){
 				uni.navigateTo({
 					url: '/pages/update-info/update-info'
+				})
+			},
+			toFeedabckOpinion(){
+				uni.navigateTo({
+					url: '/pages/opinion-feedback/opinion-feedback'
 				})
 			}
 		}

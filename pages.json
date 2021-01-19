@@ -277,6 +277,14 @@
 				"enablePullDownRefresh": false,
 				"softinputNavBar": "none"
 			}
+		},
+		{
+			"path" : "pages/opinion-feedback/opinion-feedback",
+			"style": {
+				"navigationBarTitleText": "意见反馈",
+				"enablePullDownRefresh": false,
+				"softinputNavBar": "none"
+			}
 		}
 	],
 	"globalStyle": {
