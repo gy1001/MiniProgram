@@ -1,5 +1,7 @@
 <template>
 	<view class="person-container">
+		<!-- 操作菜单 -->
+		<popup-right-box @toggle="togglePopupVisible" :visible="popupVisible" :list="popupList"></popup-right-box>
 		<!-- 背景图 + 用户基本信息 -->
 		<user-space-head :userInfo="userInfo"></user-space-head>
 		<!-- 统计 -->
@@ -27,6 +29,7 @@
 	import UserSpaceInfo from '../../components/user-space-info/user-space-info.vue'
 	import NewsList from '../../components/news-list/news-list.vue'
 	import LoadMore from '../../components/load-more.vue'
+	import PopupRightBox from '../../components/popup-right-box/popup-right-box.vue'
 	export default {
 		components: {
 			"user-space-head": UserSpaceHead,
@@ -34,7 +37,8 @@
 			'swiper-tab-head': SwiperTabHead,
 			"user-space-info": UserSpaceInfo,
 			"news-list": NewsList,
-			"load-more": LoadMore
+			"load-more": LoadMore,
+			"popup-right-box": PopupRightBox
 		},
 		data() {
 			return {
@@ -123,10 +127,31 @@
 					],
 					loadText: '上拉加载更多'
 				},
+				popupVisible: false,
+				popupList: [
+					{
+						text: '拉黑',
+						handler: this.blockUser,
+						icon: 'icon-sousuo'
+					},
+					{
+						text: '备注',
+						icon: 'icon-qingchu',
+						handler: this.remarks
+					}
+				],
 			};
 		},
 		
 		methods: {
+			blockUser(){
+				this.togglePopupVisible()
+				console.log("拉黑")
+			},
+			remarks(){
+				this.togglePopupVisible()
+				console.log("备注")
+			},
 			tabChange(index){
 				this.tabIndex = index
 			},
@@ -154,13 +179,21 @@
 					this.followListObj.list.push(newItemInfo)
 					this.followListObj.loadText = "上拉加载更多"
 				}, 1000);
-			}
+			},
+			togglePopupVisible(){
+				this.popupVisible = !this.popupVisible
+			},
 		},
 		onReachBottom() {
 			if(Number(this.tabIndex) === 1){
 				this.loadMoreActiveList()
 			}
-		}
+		},
+		onNavigationBarButtonTap(event) {
+			if(event.index === 0){
+				this.togglePopupVisible()
+			}
+		},
 	}
 </script>
 

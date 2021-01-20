@@ -38,7 +38,7 @@
 .paper-right-popup{
 	position fixed
 	right 0
-	top 10upx
+	top 120upx
 	z-index 2000
 	background #FFFFFF
 	width 55%
