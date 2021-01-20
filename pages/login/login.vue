@@ -28,11 +28,7 @@
 			<view class="other-login-container login-padding">
 				第三方登录
 			</view>
-			<view class="other-login-way u-flex u-acenter u-jbetween">
-				<view class="icon iconfont icon-weixin"></view>
-				<view class="icon iconfont icon-QQ"></view>
-				<view class="icon iconfont icon-xinlangweibo"></view>
-			</view>
+			<other-login></other-login>
 			<view class="privacy-container u-flex u-jcenter u-acenter login-padding">
 				注册代表你同意 <view class="privacy-text">《糗事百科用户协议》</view>
 			</view>
@@ -41,9 +37,11 @@
 
 <script>
 	import UniStatusBar from "../../components/uni-status-bar/uni-status-bar.vue"
+	import OtherLogin from '../../components/other-login/other-login.vue'
 	export default {
 		components: {
-			"uni-status-bar": UniStatusBar
+			"uni-status-bar": UniStatusBar,
+			"other-login": OtherLogin
 		},
 		data() {
 			return {
@@ -114,7 +112,7 @@
 				}
 				this.codeTime  = 120;
 				// 请求服务器发送验证码
-				this.timer = 	setInterval(()=>{
+				this.timer = 	setInterval(() => {
 					this.codeTime --
 					if(this.codeTime <= 0){
 						clearInterval(this.timer)
@@ -214,29 +212,6 @@
 			content ''
 			top 50%
 			right 25%
-		}
-	}
-	.other-login-way{
-		padding 20upx 150upx
-		width 100%
-		box-sizing border-box
-		.icon{
-			width 100upx
-			height 100upx
-			font-size 55upx
-			border-radius 100%
-			text-align center
-			box-sizing border-box
-			color #FFFFFF
-			&.icon-weixin{
-				background-color #2BD19B
-			}
-			&.icon-xinlangweibo{
-				background-color #FC7729
-			}
-			&.icon-QQ{
-				background-color #2CAEFC
-			}
 		}
 	}
 	.privacy-container{
