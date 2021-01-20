@@ -305,6 +305,25 @@
 					"softinputNavBar": "none"
 				}
 			}	
+		},
+		{
+			"path" : "pages/person-space/person-space",
+			"style": {
+				"navigationBarTitleText": "个人空间",
+				"enablePullDownRefresh": false,
+				"app-plus":{
+					"softinputNavBar": "none",
+					"scrollIndicator": "none",
+					"titleNView":{
+						"type": "transparent",
+						"buttons": [
+							{
+								"type": "menu"
+							}
+						]
+					}
+				}
+			}
 		}
 	],
 	"globalStyle": {

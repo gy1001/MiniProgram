@@ -2,7 +2,7 @@
 	<view class="mine-container">
 		<template v-if="loginStatus">
 			<!-- 登录 -->
-			<view class="user-info u-flex u-acenter">
+			<view class="user-info u-flex u-acenter" @click="toMySpace">
 				<image src="../../static/demo/userpic/5.jpg" mode="widthFix" lazy-load></image>
 				<view class="user-name-box u-flex flex-column">
 					<view class="">昵称</view>
@@ -76,7 +76,7 @@
 						icon: 'yiwen'
 					}
 				],
-				loginStatus: false
+				loginStatus: true
 			};
 		},
 		onNavigationBarButtonTap(event) {
@@ -91,6 +91,11 @@
 			toLogin(){
 				uni.navigateTo({
 					url: "/pages/login/login"
+				})
+			},
+			toMySpace(){
+				uni.navigateTo({
+					url: "/pages/person-space/person-space"
 				})
 			}
 		}
