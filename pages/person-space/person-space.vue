@@ -9,20 +9,6 @@
 			<swiper-tab-head @tabChange="tabChange" :scrollItemStyle="scrollItemStyle" :tabBars="tabBarList" :tabIndex="tabIndex" :showBorder="false"></swiper-tab-head>
 			<!-- 主页 -->
 			<user-space-info :userInfo="userInfo"></user-space-info>
-			<!-- <view class="user-space-home">
-				<view class="user-space-item">
-					<view class="item-title">账号信息</view>
-					<view class="item-text">糗龄: {{usedTime}}</view>
-					<view class="item-text">糗百ID: {{userInfo.id}}</view>
-				</view>
-				<view class="user-space-item">
-					<view class="item-title">个人信息</view>
-					<view class="item-text">星座：{{constellationText}}</view>
-					<view class="item-text">职业：{{userInfo.job}}</view>
-					<view class="item-text">故乡：{{userInfo.homeTown}}</view>
-					<view class="item-text">情感状态：{{userInfo.maritalStatus}}</view>
-				</view>
-			</view> -->
 		</view>
 	</view>
 </template>
@@ -98,19 +84,5 @@
 		height 20upx
 		background-color #EEEEEE
 	}
-	// .user-space-home{
-	// 	padding 0 20upx
-	// 	.user-space-item{
-	// 		border-bottom solid 1upx #DDDDDD
-	// 		padding 20upx 0
-	// 		.item-title{
-	// 			margin-bottom 10upx
-	// 			font-size 30upx
-	// 		}
-	// 		.item-text{
-	// 			color #BBBBBB
-	// 		}
-	// 	}
-	// }
 }
 </style>
