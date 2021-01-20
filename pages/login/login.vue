@@ -5,16 +5,24 @@
 		<view class="icon iconfont icon-guanbi" @click="navigateBack"></view>
 		<image class="uni-img-bar" src="../../static/image/loginhead.png" mode="widthFix" lazy-load></image>
 		<view class="input-container">
-			<input type="password" v-model="account" class="uni-input" placeholder="昵称/手机号" />
-			<view class="password-box">
+			<template v-if="codeLoginStatus">
+				<input type="number" maxlength="11" v-model="account" class="uni-input" placeholder="请输入手机号"/>
+			</template>
+			<input v-else type="text" v-model="account" class="uni-input" placeholder="昵称/手机号/邮箱" />
+			<view class="password-box" v-if="codeLoginStatus">
+				<input type="text" v-model="codeNum" class="uni-input" placeholder="请输入验证码" />
+				<view @click="sendCodeNum" class="send-code-btn u-flex u-acenter"><view class="send-code-text">{{codeTime > 0 ? `重新发送(${codeTime})` : '获取验证码'}}</view></view>
+			</view>
+			<view class="password-box" v-else>
 				<input type="password" v-model="password" class="uni-input" placeholder="请输入密码" />
 				<view class="forget-psw u-flex u-acenter u-jcenter">忘记密码 <view class="icon iconfont icon-yiwen"></view></view>
 			</view>
 			<button :loading="requestLoading" class="update-psw-btn" :class="{'disabled': btnDisabled }" @click="submit" type="primary">登录</button>
 		</view>
 			<!-- 登录状态切换 -->
-			<view class="login-toggle u-flex u-jcenter u-acenter login-padding">
-				验证码登录<view class="icon-jinru icon iconfont"></view>
+			<view class="login-toggle u-flex u-jcenter u-acenter login-padding" @click="toggleCodeLogin">
+				{{codeLoginStatus ? '账号密码登录' : '验证码登录' }}
+			<view class="icon-jinru icon iconfont"></view>
 			</view>
 			<!-- 第三方登录 -->
 			<view class="other-login-container login-padding">
@@ -44,11 +52,20 @@
 				},
 				password: '',
 				account: '',
-				requestLoading: false
+				requestLoading: false,
+				// 验证码登录
+				codeLoginStatus: false,
+				// 验证码
+				codeNum: '',
+				codeTime: ''
 			};
 		},
 		computed:{
 			btnDisabled(){
+				if(this.codeLoginStatus){
+					// 验证码登录
+					return !(this.account && this.codeNum)
+				}
 				return !(this.password && this.account)
 			}
 		},
@@ -57,7 +74,53 @@
 				uni.navigateBack()
 			},
 			submit(){
-				
+				// 验证码登录
+				if(this.codeLoginStatus){
+					if(!this.validatePhone(this.account)){
+						return
+					}
+					console.log("验证码登录逻辑")
+				}
+				// 其他登录
+			},
+			toggleCodeLogin(){
+				this.codeLoginStatus = !this.codeLoginStatus
+				this.clearInputValue()
+			},
+			clearInputValue(){
+				this.account = ""
+				this.password = ""
+				this.codeNum = ""
+			},
+			validatePhone(mobile){
+				const phoneRegxp = /^1[34578]\d{9}$/
+				if(!phoneRegxp.test(mobile)){
+					uni.showToast({
+						icon: "none",
+						title: '请输入正确的手机号'
+					})
+					return false
+				}
+				return false
+			},
+			sendCodeNum(){
+				if(this.codeNum > 0){
+					return
+				}
+				// 验证手机号是否正确
+				const phoneRegxp = /^1[34578]\d{9}$/
+				if(!this.validatePhone(this.account)){
+					return
+				}
+				this.codeTime  = 120;
+				// 请求服务器发送验证码
+				this.timer = 	setInterval(()=>{
+					this.codeTime --
+					if(this.codeTime <= 0){
+						clearInterval(this.timer)
+						this.codeTime = 0 
+					}
+				},1000)
 			}
 		}
 	}
@@ -88,7 +151,22 @@
 		.password-box{
 			position relative
 			input{
-				padding-right 160upx
+				padding-right 180upx
+			}
+			.send-code-btn{
+				position absolute
+				right 0
+				top 0
+				height 100%
+				.send-code-text{
+					width 180upx
+					background-color #EEEEEE
+					padding 10upx 0
+					border-radius 10upx
+					text-align center
+					color #999999
+					white-space nowrap
+				}
 			}
 			.forget-psw{
 				position absolute
