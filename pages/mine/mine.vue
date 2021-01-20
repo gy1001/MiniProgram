@@ -25,24 +25,7 @@
 			<view @click="toLogin" class="u-flex u-acenter u-jcenter">账号密码登录 <view class="icon iconfont icon-jinru"></view></view>
 		</template>
 		<!-- 数据 -->
-		<view class="user-data-box u-flex u-acenter">
-			<view class="user-data-item">
-				<view class="item-number">0</view>
-				<view class="item-text">糗事</view>
-			</view>
-			<view class="user-data-item">
-				<view class="item-number">0</view>
-				<view class="item-text">动态</view>
-			</view>
-			<view class="user-data-item">
-				<view class="item-number">0</view>
-				<view class="item-text">评论</view>
-			</view>
-			<view class="user-data-item">
-				<view class="item-number">0</view>
-				<view class="item-text">收藏</view>
-			</view>
-		</view>
+		<top-bottom :list="userData"></top-bottom>
 		<!-- 广告位 -->
 		<image class="home-adver" src="../../static/demo/demo20.jpg" mode="widthFix" lazy-load></image>
 		<!-- 功能列表 -->
@@ -56,9 +39,11 @@
 
 <script>
 	import LeftRight from '../../components/left-right/left-right.vue'
+	import TopBottom from '../../components/top-bottom/top-bottom.vue'
 	export default {
 		components: {
-			'left-right': LeftRight
+			'left-right': LeftRight,
+			"top-bottom": TopBottom
 		},
 		data() {
 			return {
@@ -76,7 +61,25 @@
 						icon: 'yiwen'
 					}
 				],
-				loginStatus: true
+				loginStatus: true,
+				userData: [
+					{
+						number: 10,
+						text: '糗事'
+					},
+					{
+						number: 10,
+						text: '动态'
+					},
+					{
+						number: 10,
+						text: '评论'
+					},
+					{
+						number: 10,
+						text: '收藏'
+					}
+				]
 			};
 		},
 		onNavigationBarButtonTap(event) {
@@ -142,21 +145,6 @@
 			flex 2
 			.user-active-number{
 				color #AAAAAA
-			}
-		}
-	}
-	.user-data-box{
-		padding 20upx
-		box-sizing border-box
-		.user-data-item{
-			text-align center
-			width 25%
-			.item-text{
-				color #989898
-			}
-			.item-number{
-				color #333333
-				font-size 30upx
 			}
 		}
 	}
