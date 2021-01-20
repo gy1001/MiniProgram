@@ -1,17 +1,17 @@
 <template>
 	<view class="user-space-head u-flex u-acenter u-jcenter">
-			<image @click="changePersonBg" class="person-bg" :src="`../../static/demo/topicpic/${userInfo.bgNum}.jpeg`" mode="widthFix" lazy-load></image>
-			<view class="user-space-info u-flex u-acenter flex-column">
-				<image class="user-avatar" :src="userInfo.userPic" mode="widthFix" lazy-load></image>
-				<view class="user-name margin-space u-flex u-acenter">
-					<view class="user-name-text">{{userInfo.userName}}</view>
-					<gender-age-tag :age="userInfo.age" :gender="userInfo.gender"></gender-age-tag>
-				</view>
-				<view @click="followUser" class="icon iconfont user-space-btn" :class="[userInfo.isFollow ? 'active' : 'icon-zengjia']">
-					{{userInfo.isFollow ? '已关注' : '关注'}}
-				</view>
+		<image @click="changePersonBg" class="person-bg" :src="`../../static/demo/topicpic/${userInfo.bgNum}.jpeg`" mode="widthFix" lazy-load></image>
+		<view class="user-space-info u-flex u-acenter flex-column">
+			<image class="user-avatar" :src="userInfo.userPic" mode="widthFix" lazy-load></image>
+			<view class="user-name margin-space u-flex u-acenter">
+				<view class="user-name-text">{{userInfo.userName}}</view>
+				<gender-age-tag :age="userInfo.age" :gender="userInfo.gender"></gender-age-tag>
+			</view>
+			<view @click="followUser" class="icon iconfont user-space-btn" :class="[userInfo.isFollow ? 'active' : 'icon-zengjia']">
+				{{userInfo.isFollow ? '已关注' : '关注'}}
 			</view>
 		</view>
+	</view>
 </template>
 
 <script>
