@@ -20,7 +20,7 @@
 					{ text: '绑定邮箱', handler: this.bindEmail },
 					{ text: '资料编辑', handler: this.editInfo },
 					{ text: '小纸条' },
-					{ text: '清除缓存' },
+					{ text: '清除缓存', handler: this.clearCache },
 					{ text: '意见反馈', handler: this.toFeedabckOpinion},
 					{ text: '关于糗百', handler: this.toAboutUs }
 				]
@@ -51,6 +51,19 @@
 				uni.navigateTo({
 					url: '/pages/about/about'
 				})
+			},
+			clearCache(){
+				uni.showModal({
+					title: '提示',
+					content: '是否要清除缓存',
+					success: (res) => {
+						if (res.confirm) {
+							uni.clearStorage()
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
 			}
 		}
 	}
