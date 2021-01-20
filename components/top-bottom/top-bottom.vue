@@ -32,6 +32,7 @@
 		width 25%
 		.item-text{
 			color #989898
+			font-weight bold
 		}
 		.item-number{
 			color #333333
