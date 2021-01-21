@@ -1,5 +1,5 @@
 <template>
-	<view class="top-lastest-list u-flex u-acenter animated fadeInLeft" @click="toDetail">
+	<view class="top-lastest-list u-flex u-acenter animated fadeIn" @click="toDetail">
 		<image class="top-lastest-img" :src="topicItem.titlePic" mode="widthFix" lazy-load></image>
 		<view class="top-lastest-right">
 			<view class="lastest-right-title">#{{topicItem.title}}</view>

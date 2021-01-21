@@ -1461,3 +1461,7 @@ radio-group label, checkbox-group label{
 .left-win-active text{
 	color: #007AFF !important;
 }
+/* 避免图片加载时候闪一下的效果 */
+image{ 
+	will-change: transform
+}

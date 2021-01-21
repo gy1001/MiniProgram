@@ -137,8 +137,8 @@
 				"navigationBarTitleText": "发布",
 				"app-plus": {
 					// 禁用原生导航
-					"titleNView": false // 页面支持通过配置 navigationStyle为custom，或titleNView为false，来禁用原生导航栏。
-					
+					"titleNView": false, // 页面支持通过配置 navigationStyle为custom，或titleNView为false，来禁用原生导航栏。
+					"animationType": "slide-in-bottom"
 				}
 			}
 		},

@@ -1,5 +1,5 @@
 <template>
-	<view class="common-list u-flex animated fadeInLeft">
+	<view class="common-list u-flex animated fadeIn">
 		<view class="common--list-left">
 			<image class="common-list-avatar" :src="itemInfo.userpic" mode="widthFix" lazy-load></image>
 		</view>
