@@ -3,6 +3,7 @@
 		onLaunch: function() {
 			console.log('App Launch')
 			this.$lib.network.on()
+			this.$lib.update()
 		},
 		onShow: function() {
 			console.log('App Show')
