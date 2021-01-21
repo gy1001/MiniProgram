@@ -71,5 +71,6 @@ const update = ()=>{
 }
 export default {
 	ceshi,
-	network
+	network,
+	update
 }
