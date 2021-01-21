@@ -4,7 +4,38 @@ import config from './config.js'
 const ceshi = function(){
 	consle.log(config.webUrl)
 }
-
+// 网络监听
+const network = {
+	// 网络状态
+	isConnect: false,
+	// 监听网络状态
+	on(){
+		// 获取网络状态
+		uni.getNetworkType({
+			success: res => {
+				if(res.networkType !== "none"){
+					this.isConnect = true
+					return
+				}
+				uni.showToast({
+					icon: "none",
+					title: '请先连接网络'
+				})
+			}
+		})
+		// 监听网络状态
+		uni.onNetworkStatusChange((res) => {
+			this.isConnect = res.isConnected;
+			if(!res.isConnected){
+				uni.showToast({
+					icon: "none",
+					title: '您目前处于断网状态'
+				})
+			}
+		})
+	}
+}
 export default {
-	ceshi
+	ceshi,
+	network
 }

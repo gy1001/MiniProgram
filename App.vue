@@ -2,7 +2,7 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
-			console.log(this.$lib)
+			this.$lib.network.on()
 		},
 		onShow: function() {
 			console.log('App Show')
