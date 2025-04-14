@@ -10,6 +10,7 @@
 		},
 		onHide: function() {
 			console.log('App Hide')
+			console.log("A TEST")
 		}
 	}
 </script>
